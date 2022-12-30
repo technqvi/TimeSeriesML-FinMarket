@@ -1,0 +1,13 @@
+{
+'file_name' : 'S50-Daily-Y09-Now.csv',
+'data_dir' : '../data',
+'model_dir' : '../model',
+'label_name' : 'Price',
+'train_frac' : 0.8,
+'sequence_length' : 60,
+'batch_size' : 32,
+'n_epochs' : 50,
+'n_epochs_stop' : 6,
+'background_data_size' : 1000,
+'test_sample_size' : 200
+}
