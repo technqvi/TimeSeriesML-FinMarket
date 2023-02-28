@@ -1,0 +1,44 @@
+ab_path = "../data/SPY-Daily-Y09-Now.csv"
+asset_name='SP500-SPY'
+
+start_date='2015-01-01'
+end_date='2022-12-31'
+date_col='Date'
+prediction_col='SIGNAL'
+# feature_cols=['Price','EMA1','SIGNAL','RSI']
+feature_cols=['SIGNAL']
+
+input_sequence_length =60 #60 #120
+output_sequence_length =10  # 10 #20
+train_ratio=0.8
+
+
+n_epochs =   150  #100/150/200
+n_batch_size = 32  # 32/48/64
+n_early=15  #  10/15/20
+
+------------------
+
+
+Train Row : 1542 to predict future 10
+Total NN : 60= 60(backward step) x 1 (features) with step up 60 until 240
+[60, 120, 180, 240] and [0.  0.1 0.2]
+all combination : 4 x 3 = 12
+MAx run : 12 each trail run to essemble  3
+
+--------------------------------
+Best mean_absolute_error So Far: 0.024713527411222458
+Total elapsed time: 10h 53m 10s
+
+{'input_unit': 240, 'Dropout_rate': 0.1}
+
+test loss, test acc: [0.04395750164985657, 0.04395750164985657, 0.051833219826221466]
+
+Best epoch: 101
+
+Root MEAN Square Error(RMSE): 1.6
+Mean Absolute Error (MAE): 1.07
+Mean Absolute Percentage Error (MAPE): inf %
+Median Absolute Percentage Error (MDAPE): 25.13 %
+
+
