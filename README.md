@@ -13,7 +13,7 @@ This project is about how to build time-series machine leaning to predict asset 
 Use LSTM to build time-series forecasting to take price over the past 60 days to  predict price in the next 10 days.  It use [Stock Market Forecasting Neural Networks for Multi-Output Regression in Python](https://www.relataly.com/stock-price-prediction-multi-output-regression-using-neural-networks-in-python/5800/) as starting template to develop.
 #### The steps performed include:
 - Load Data from CSV file , we use [Amibroker](https://www.amibroker.com/) exploration to export price and create technical indicator feature such as exponential moving average ,MCD, RSI 
-#### Reference: [relataly-public-python-tutorials](https://github.com/flo7up/relataly-public-python-tutorials/blob/master/006%20Time%20Series%20Forecasting%20-%20Multi-Output%20Regression.ipynb)
+#### Source Code Reference: [006 Time Series Forecasting - Multi-Output Regression.ipynb](https://github.com/flo7up/relataly-public-python-tutorials/blob/master/006%20Time%20Series%20Forecasting%20-%20Multi-Output%20Regression.ipynb)
 
 
 ## Option-Section
