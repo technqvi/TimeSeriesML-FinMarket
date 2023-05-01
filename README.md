@@ -13,21 +13,25 @@ This project is about how to build time-series machine leaning to predict asset 
 #### Overview
 - This is one of the core files on this repo,  we apply the LSTM model to build time-series forecasting to take prices over the past 60 days to predict prices in the next 10 days.
 - It allows you to select what you want to predict as single columns as output but predict multiple outcomes in advance, for instance, you take MA10 , MACD, and RSI  60 days ago to predict Price in the next 10 day. 
-- In addition to price as input features,   you can choose others like MACD, SIGNAL,EMA,RSI as well as a mixture of these features as multiple features to feed into the model to predict. 
+- In addition to price as single input features(univariate time ),   you can choose others like MACD, SIGNAL,EMA,RSI as well as a mixture of these features as multiple features(multivariate) to feed into the model to predict. 
 #### References
 - Document: [Stock Market Forecasting Neural Networks for Multi-Output Regression in Python](https://www.relataly.com/stock-price-prediction-multi-output-regression-using-neural-networks-in-python/5800/)
 - Source: [006 Time Series Forecasting - Multi-Output Regression.ipynb](https://github.com/flo7up/relataly-public-python-tutorials/blob/master/006%20Time%20Series%20Forecasting%20-%20Multi-Output%20Regression.ipynb)
 
-### [lstm-tune-dev](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-tune-dev)
-#### [Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb)
+### [lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb)
 #### Overview
-- To find optimal hypperparamter to get the best model ,We use KerasTuner to perform hypterparamter tuning . 
-- Primarily,There are 2 files to as belows
-#### Code
+- Use  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)  to find optimal hypperparamter to get the best model with KerasTuner.
 - [Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb) : we tuned 2 stuff ,   Input-Unit on hidden layer and Dropout-Rate . we added tuning code part(Training the TUNED Model) into this file. The reamining , it is  the same as  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb) 
+
+### [lstm-tune-dev/lstm-tune-dev/Tune_jsbl-GenTS-multiI-InToOut.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tune_jsbl-GenTS-multiI-InToOut.ipynb)
+- Use Keras TimeseriesGenerator for preparing time series  
+- It is multiple parallel series at the same time step in each series concurrently.
+- For example, take Price,MACD, RSI in the past 20 days to predict each of them in the next 5 days simultaneously.  each of them forecasts future value on its own separately. 
+- Reference content : [https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/](https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/)
  
 ### Refernces
 - [Getting Started with KerasTuner](https://keras.io/guides/keras_tuner/getting_started/)
 - [Introduction to the Keras Tuner](https://www.tensorflow.org/tutorials/keras/keras_tuner)
+- [BayesianOptimization Tuner](https://keras.io/api/keras_tuner/tuners/bayesian/)
 
 ## Option-Section
