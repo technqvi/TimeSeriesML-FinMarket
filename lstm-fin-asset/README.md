@@ -23,6 +23,12 @@
 ### [soubhik_multi_lstm-finmarket.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-fin-asset/soubhik_multi_lstm-finmarket.ipynb)
 - LSTM  Multivariate Time Series Forecasting to predict stock price movement.
 - Reference Content: [Multivariate Time Series Forecasting using RNN(LSTM)](https://medium.com/mlearning-ai/multivariate-time-series-forecasting-using-rnn-lstm-8d840f3f9aa7)
+### [Witchapong(Dev)-LSTM-ThaiStock.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-fin-asset/Witchapong(Dev)-LSTM-ThaiStock.ipynb)
+- Reference Content: [Let's try simple stock price forecasting with Deep Learning — LSTM (Python)](https://medium.com/datawiz-th/%E0%B8%A1%E0%B8%B2%E0%B8%A5%E0%B8%AD%E0%B8%87-forecast-%E0%B8%A3%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%AB%E0%B8%B8%E0%B9%89%E0%B8%99%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%87%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B9%86-%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-deep-learning-lstm-python-305c480db223)
+
+### [torch_fin_market_Daniel](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset/torch_fin_market_Daniel)
+- Appy PyTorch framework to build Multivariate Time Series Forecasting model.
+- Reference Content&Code : [Multivariate Time Series Forecasting with Deep Learning](https://towardsdatascience.com/multivariate-time-series-forecasting-with-deep-learning-3e7b3e2d2bcf) | [deep-forecasting](https://github.com/danielhkt/deep-forecasting)
 
 
 ### [RollingMultiStepUnivLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-fin-asset/RollingMultiStepUnivLSTM.ipynb)
