@@ -47,9 +47,9 @@ This directory contains model file ,scaler files and  experimental result.
 #### [lstm-jason-brownlee](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-jason-brownlee)
 There are a lot of files that we do some research regarding how to build LSTM Time-Series   of  [machinelearningmastery.com powered by Jason Brownlee](https://machinelearningmastery.com/)
 - [How to Develop LSTM Models for Time Series Forecasting](https://machinelearningmastery.com/how-to-develop-lstm-models-for-time-series-forecasting/)
-- [How to Use the TimeseriesGenerator for Time Series Forecasting in Keras](How to Use the TimeseriesGenerator for Time Series Forecasting in Keras)
-- [Multivariate Time Series Forecasting with LSTMs in Keras](https://machinelearningmastery.com/multivariate-time-series-forecasting-lstms-keras/)
 - [Time Series Forecasting as Supervised Learning](https://machinelearningmastery.com/time-series-forecasting-supervised-learning/)
+- [How to Use the TimeseriesGenerator for Time Series Forecasting in Keras](https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/)
+- [Multivariate Time Series Forecasting with LSTMs in Keras](https://machinelearningmastery.com/multivariate-time-series-forecasting-lstms-keras/)
 - [How to Develop LSTM Models for Time Series Forecasting](https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/ )
 
 
