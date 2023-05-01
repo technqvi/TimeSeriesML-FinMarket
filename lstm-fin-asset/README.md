@@ -20,7 +20,7 @@
 ### [soubhik_univariae_lstm-finmarket.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-fin-asset/soubhik_univariae_lstm-finmarket.ipynb)
 - LSTM  Univariate Time Series Forecasting to predict stock price movement.
 - Reference Content: [Univariate Time Series Forecasting using RNN(LSTM)](https://medium.com/mlearning-ai/univariate-time-series-forecasting-using-rnn-lstm-32702bd5cf4)
-### [lstm-fin-asset/soubhik_multi_lstm-finmarket.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-fin-asset/soubhik_multi_lstm-finmarket.ipynb)
+### [soubhik_multi_lstm-finmarket.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-fin-asset/soubhik_multi_lstm-finmarket.ipynb)
 - LSTM  Multivariate Time Series Forecasting to predict stock price movement.
 - Reference Content: [Multivariate Time Series Forecasting using RNN(LSTM)](https://medium.com/mlearning-ai/multivariate-time-series-forecasting-using-rnn-lstm-8d840f3f9aa7)
 

@@ -29,12 +29,10 @@ This project is about how to build time-series machine leaning to predict asset 
 - For example, take Price,MACD, RSI in the past 20 days to predict each of them in the next 5 days simultaneously.  each of them forecasts future value on its own separately. 
 - Reference content : [https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/](https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/)
  
-### Refernces
-- [Getting Started with KerasTuner](https://keras.io/guides/keras_tuner/getting_started/)
-- [Introduction to the Keras Tuner](https://www.tensorflow.org/tutorials/keras/keras_tuner)
-- [BayesianOptimization Tuner](https://keras.io/api/keras_tuner/tuners/bayesian/)
 
-### [lstm-fin-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset) (See more detail...)
+
+### [lstm-fin-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset)
+click  link to see detail.
 
 ### [data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/data)
 
@@ -45,3 +43,10 @@ This project is about how to build time-series machine leaning to predict asset 
 ## Option-Section
 #### [lstm-jason-brownlee](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-jason-brownlee)
 #### [additional_dev](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/additional_dev)
+
+
+
+#### Keras Tuner Refernces
+- [Getting Started with KerasTuner](https://keras.io/guides/keras_tuner/getting_started/)
+- [Introduction to the Keras Tuner](https://www.tensorflow.org/tutorials/keras/keras_tuner)
+- [BayesianOptimization Tuner](https://keras.io/api/keras_tuner/tuners/bayesian/)
