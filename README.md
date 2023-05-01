@@ -22,6 +22,7 @@ This project is about how to build time-series machine leaning to predict asset 
 #### Overview
 - Use  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)  to find optimal hypperparamter to get the best model with KerasTuner.
 - [Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb) : we tuned 2 stuff ,   Input-Unit on hidden layer and Dropout-Rate . we added tuning code part(Training the TUNED Model) into this file. The reamining , it is  the same as  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb) 
+- [all-kind-of-lstm-network](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/all-kind-of-lstm-network.txt) : there are variouse LSTM Network design as stating point for tuning hypter-paramters
 
 ### [lstm-tune-dev/lstm-tune-dev/Tune_jsbl-GenTS-multiI-InToOut.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tune_jsbl-GenTS-multiI-InToOut.ipynb)
 - Use Keras TimeseriesGenerator for preparing time series  
