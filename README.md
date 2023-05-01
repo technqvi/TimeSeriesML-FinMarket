@@ -42,6 +42,5 @@ This project is about how to build time-series machine leaning to predict asset 
 
 
 ## Option-Section
-#### [torch_fin_market_Danie](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/torch_fin_market_Daniel)
 #### [lstm-jason-brownlee](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-jason-brownlee)
 #### [additional_dev](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/additional_dev)
