@@ -34,7 +34,7 @@ This project is about how to build time-series machine leaning to predict asset 
 - [Introduction to the Keras Tuner](https://www.tensorflow.org/tutorials/keras/keras_tuner)
 - [BayesianOptimization Tuner](https://keras.io/api/keras_tuner/tuners/bayesian/)
 
-### [lstm-fin-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset) (More Detail)
+### [lstm-fin-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset) (See more detail...)
 
 ### [data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/data)
 
