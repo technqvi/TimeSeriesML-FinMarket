@@ -35,13 +35,24 @@ This project is about how to build time-series machine leaning to predict asset 
 click  link to see detail.
 
 ### [data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/data)
+This directory contains several csv file to be used as input data to run these script files such as  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb
 
 ### [models](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/models)
+This directory contains model file ,scaler files and  experimental result.
 
 
 
 ## Option-Section
+
 #### [lstm-jason-brownlee](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-jason-brownlee)
+There are a lot of files that we do some research regarding how to build LSTM Time-Series   of  [machinelearningmastery.com powered by Jason Brownlee](https://machinelearningmastery.com/)
+- [How to Develop LSTM Models for Time Series Forecasting](https://machinelearningmastery.com/how-to-develop-lstm-models-for-time-series-forecasting/)
+- [How to Use the TimeseriesGenerator for Time Series Forecasting in Keras](How to Use the TimeseriesGenerator for Time Series Forecasting in Keras)
+- [Multivariate Time Series Forecasting with LSTMs in Keras](https://machinelearningmastery.com/multivariate-time-series-forecasting-lstms-keras/)
+- [Time Series Forecasting as Supervised Learning](https://machinelearningmastery.com/time-series-forecasting-supervised-learning/)
+- [How to Develop LSTM Models for Time Series Forecasting](https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/ )
+
+
 #### [additional_dev](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/additional_dev)
 
 
