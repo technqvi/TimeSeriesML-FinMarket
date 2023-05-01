@@ -3,9 +3,7 @@ This project is about how to build time-series machine leaning to predict asset 
 ### Main Packages  on Python 3.9
 - tensorflow >=2.11
 - scikit-learn >= 1.2.2
-- pandas >=1.5.3
-- numpy >= 1.24.2
-- matplotlib >=3.7.1
+- pandas >=1.5.3 and numpy >= 1.24.2
 
 ## Main-Section
 
@@ -18,7 +16,7 @@ This project is about how to build time-series machine leaning to predict asset 
 - Document: [Stock Market Forecasting Neural Networks for Multi-Output Regression in Python](https://www.relataly.com/stock-price-prediction-multi-output-regression-using-neural-networks-in-python/5800/)
 - Source: [006 Time Series Forecasting - Multi-Output Regression.ipynb](https://github.com/flo7up/relataly-public-python-tutorials/blob/master/006%20Time%20Series%20Forecasting%20-%20Multi-Output%20Regression.ipynb)
 
-### lstm-tune-dev
+### [lstm-tune-dev](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-tune-dev)
 #### [Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb)
 - Use  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)  to find optimal hypperparamter to get the best model with KerasTuner.
 - [Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb) : we tuned 2 stuff ,   Input-Unit on hidden layer and Dropout-Rate . we added tuning code part(Training the TUNED Model) into this file. The remaining  is  the same as  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb) 
@@ -35,4 +33,15 @@ This project is about how to build time-series machine leaning to predict asset 
 - [Introduction to the Keras Tuner](https://www.tensorflow.org/tutorials/keras/keras_tuner)
 - [BayesianOptimization Tuner](https://keras.io/api/keras_tuner/tuners/bayesian/)
 
+### [lstm-fin-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset)
+
+### [data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/data)
+
+### [models](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/models)
+
+
+
 ## Option-Section
+#### [torch_fin_market_Danie](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/torch_fin_market_Daniel)
+#### [lstm-jason-brownlee](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-jason-brownlee)
+#### [additional_dev](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/additional_dev)
