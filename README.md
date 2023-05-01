@@ -27,7 +27,7 @@ This project is about how to build time-series machine leaning to predict asset 
 - Use Keras TimeseriesGenerator for preparing time series  
 - It is multiple parallel series at the same time step in each series concurrently.
 - For example, take Price,MACD, RSI in the past 20 days to predict each of them in the next 5 days simultaneously.  each of them forecasts future value on its own separately. 
-- Reference content : [https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/](https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/)
+- Reference content : [How to Use the TimeseriesGenerator for Time Series Forecasting in Keras](https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/)
  
 
 
@@ -35,7 +35,7 @@ This project is about how to build time-series machine leaning to predict asset 
 click  link to see detail.
 
 ### [data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/data)
-This directory contains several csv file to be used as input data to run these script files such as  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb
+This directory contains several csv file to be used as input data to run these script files such as  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)
 
 ### [models](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/models)
 This directory contains model file ,scaler files and  experimental result.
