@@ -17,15 +17,18 @@
 
 
 ## Option Files
+### [soubhik_univariae_lstm-finmarket.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-fin-asset/soubhik_univariae_lstm-finmarket.ipynb)
+- LSTM  Univariate Time Series Forecasting to predict stock price movement.
+- Reference Content: [Univariate Time Series Forecasting using RNN(LSTM)](https://medium.com/mlearning-ai/univariate-time-series-forecasting-using-rnn-lstm-32702bd5cf4)
+### [lstm-fin-asset/soubhik_multi_lstm-finmarket.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-fin-asset/soubhik_multi_lstm-finmarket.ipynb)
+- LSTM  Multivariate Time Series Forecasting to predict stock price movement.
+- Reference Content: [Multivariate Time Series Forecasting using RNN(LSTM)](https://medium.com/mlearning-ai/multivariate-time-series-forecasting-using-rnn-lstm-8d840f3f9aa7)
+
 
 ### [RollingMultiStepUnivLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-fin-asset/RollingMultiStepUnivLSTM.ipynb)
 - This approach will roll multi-step forecast to by taking previouse output as input  to predict the next one, it is not simialar to [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)
 that the it will predict several points of a signal at once within a prediction window.
 - Reference Content&Code: [Rolling Time Series Forecasting: Creating a Multi-Step Prediction for a Rising Sine Curve using Neural Networks in Python](https://www.relataly.com/multi-step-time-series-forecasting-a-step-by-step-guide/275/)  | [005 Time Series Forecasting - Multi-step Rolling Forecasting.ipynb](https://github.com/flo7up/relataly-public-python-tutorials/blob/master/005%20Time%20Series%20Forecasting%20-%20Multi-step%20Rolling%20Forecasting.ipynb)
-
-
-
-
 
 ### [ARIMA-Auto S&P500 with.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-fin-asset/ARIMA-Auto%20S%26P500%20with.ipynb) 
 - Use ARIMA-AUTO to forecast S&P500 ETF price , USe one feature (univariate forecasting models) to predict one future values.
