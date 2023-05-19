@@ -1,0 +1,53 @@
+start_date='2015-01-01'
+end_date='2023-04-30'
+
+date_col='Date'
+
+prediction_col='EMA1'
+feature_cols=['EMA1']
+
+split_way=2
+
+input_sequence_length =60 #60 #120
+output_sequence_length =10  # 10 #20
+train_ratio=0.8
+
+
+n_epochs =   150  #100/150/200
+n_batch_size = 32  # 32/48/64
+n_early=20   #  10/15/20
+
+
+
+
+seed=88
+
+#Tuning
+mx_step=4  #3 ,4
+mxMultipleStep=1
+nExecutions_per_trial=5  #3,4,5  averger re-run on 1 trail 
+
+min_drop=0.0
+max_drop=0.2
+step_drop=0.1
+
+ratio_traial_max=1  #0.7/0.8
+
+Train Row : 1606 to predict future 10
+Total NN : 60= 60(backward step) x 1 (features) with step up 60 until 240
+[60, 120, 180, 240] and [0.  0.1 0.2]
+all combination : 4 x 3 = 12
+MAx run : 12 each trail run to essemble  5
+
+Best mean_absolute_error So Far: 0.010350651293992996
+
+{'input_unit': 120, 'Dropout_rate': 0.0}
+
+Best epoch: 105
+
+test loss, test acc: [0.023475583642721176, 0.023475583642721176, 0.026514878496527672]
+
+Root MEAN Square Error(RMSE): 8.21
+Mean Absolute Error (MAE): 6.08
+Mean Absolute Percentage Error (MAPE): 1.47 %
+Median Absolute Percentage Error (MDAPE): 1.09 %
