@@ -17,6 +17,12 @@ This project is about how to build time-series machine leaning to predict asset 
 - Document: [Stock Market Forecasting Neural Networks for Multi-Output Regression in Python](https://www.relataly.com/stock-price-prediction-multi-output-regression-using-neural-networks-in-python/5800/)
 - SourceCode: [006 Time Series Forecasting - Multi-Output Regression.ipynb](https://github.com/flo7up/relataly-public-python-tutorials/blob/master/006%20Time%20Series%20Forecasting%20-%20Multi-Output%20Regression.ipynb)
 
+### [forecast-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset)
+- [forecast_asset_movement.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/forecast_asset_movement.ipynb)
+- [load_price_asset_yahoo.ipynb]
+- [google-cloud_function]
+- [model](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset/model)
+
 ### [lstm-tune-dev](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-tune-dev)
 #### [Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb)
 - [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)  to find optimal hypperparamter to get the best model with KerasTuner.
