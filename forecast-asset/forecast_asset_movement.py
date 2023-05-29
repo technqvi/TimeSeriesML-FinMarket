@@ -389,7 +389,7 @@ if __name__ == "__main__":
 
     for idx,row in dfXYZ.iterrows():
         x_day=row["Date"]
-        request_data={"today":x_day,"asset_name":"SPY","prediction_name":"EMA1"}
+        request_data={"today":x_day.strftime('%Y-%m-%d'),"asset_name":"SPY","prediction_name":"EMA1"}
         print(f"Predict data  with {request_data}")  
         result=forecast_asset_movement(request_data) 
         print(f"========================================{result}==================================================================")
