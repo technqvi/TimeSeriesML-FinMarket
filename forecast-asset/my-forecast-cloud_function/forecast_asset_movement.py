@@ -46,7 +46,7 @@ def forecast_asset_movement(request):
     if   request is not None:  
         today=request["today"]
         asset_name=request["asset_name"]
-        prediction_feature=prequest["prediction_feature"]
+        prediction_name=request["prediction_name"]
 
 
     # # Declare and Initialize Variable
@@ -55,8 +55,8 @@ def forecast_asset_movement(request):
 
 
     date_col='Date'
-    prediction_col=prediction_feature
-    feature_cols=[prediction_feature]
+    prediction_col=prediction_name
+    feature_cols=[prediction_name]
 
     input_sequence_length =60
     output_sequence_length =10
@@ -119,7 +119,7 @@ def forecast_asset_movement(request):
     print(df.head())
     print(df.tail())
 
-    if df.empty==True or len(df)<=input_sequence_length:
+    if df.empty==True or len(df)<input_sequence_length:
         print(f"There is enough data to make prediction during {dayAgo.strftime('%Y-%m-%d')} - {today}")
         return "no enough data"
 
@@ -368,10 +368,17 @@ def forecast_asset_movement(request):
 # # uncomment both return statement
 
 if __name__ == "__main__":
-    start_pred_date='2023-04-28'  # to make predictoin of 02 May 23
-    table_id="pongthorn.FinAssetForecast.fin_movement_forecast"
-    asset='SPY'
+
     
+    start_pred_date='2023-04-28'  # to make predictoin of 02 May 23
+    table_data_id="pongthorn.FinAssetForecast.fin_data"
+    asset='SPY'
+
+    projectId='pongthorn'
+    json_credential_file=r'C:\Windows\pongthorn-5decdc5124f5.json'
+    credentials = service_account.Credentials.from_service_account_file(json_credential_file)
+    client = bigquery.Client(project=projectId,credentials=credentials )
+
     sqlXYZ=f"""
     SELECT  Date  FROM `{table_data_id}`  
     Where  Date >= '{start_pred_date}' and Symbol='{asset}' order by Date
@@ -382,11 +389,10 @@ if __name__ == "__main__":
 
     for idx,row in dfXYZ.iterrows():
         x_day=row["Date"]
-        request_data={"today":x_day,"asset_name":"SPY","prediction_feature":"EMA1"}
+        request_data={"today":x_day,"asset_name":"SPY","prediction_name":"EMA1"}
         print(f"Predict data  with {request_data}")  
-        # result=forecast_asset_movement(request_data) 
-        # print(result)
-        print(f"========================================================================================================================")
+        result=forecast_asset_movement(request_data) 
+        print(f"========================================{result}==================================================================")
 
 
 # In[ ]:
