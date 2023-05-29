@@ -20,13 +20,20 @@ asset_name,prediction_name
         "fields": []
       },
       {
-        "name": "output_date'",
+        "name": "output_date",
         "mode": "NULLABLE",
         "type": "DATE",
         "description": null,
         "fields": []
       }
     ]
+  },
+  {
+    "name": "prediction_date",
+    "mode": "NULLABLE",
+    "type": "DATE",
+    "description": null,
+    "fields": []
   },
   {
     "name": "feature_for_prediction",
@@ -51,6 +58,13 @@ asset_name,prediction_name
     ]
   },
   {
+    "name": "pred_timestamp",
+    "mode": "NULLABLE",
+    "type": "TIMESTAMP",
+    "description": null,
+    "fields": []
+  },
+  {
     "name": "prediction_name",
     "mode": "NULLABLE",
     "type": "STRING",
@@ -61,13 +75,6 @@ asset_name,prediction_name
     "name": "asset_name",
     "mode": "NULLABLE",
     "type": "STRING",
-    "description": null,
-    "fields": []
-  },
-  {
-    "name": "prediction_date",
-    "mode": "NULLABLE",
-    "type": "DATE",
     "description": null,
     "fields": []
   }
