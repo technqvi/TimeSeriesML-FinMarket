@@ -368,11 +368,10 @@ def forecast_asset_movement(request):
 # # uncomment both return statement
 
 if __name__ == "__main__":
-
-    
     start_pred_date='2023-04-28'  # to make predictoin of 02 May 23
-    table_data_id="pongthorn.FinAssetForecast.fin_data"
-    asset='SPY'
+    table_date_id="pongthorn.FinAssetForecast.fin_data"
+    asset_name='SPY'
+    prediction_name='EMA1'
 
     projectId='pongthorn'
     json_credential_file=r'C:\Windows\pongthorn-5decdc5124f5.json'
@@ -389,26 +388,8 @@ if __name__ == "__main__":
 
     for idx,row in dfXYZ.iterrows():
         x_day=row["Date"]
-        request_data={"today":x_day.strftime('%Y-%m-%d'),"asset_name":"SPY","prediction_name":"EMA1"}
+        request_data={"today":x_day.strftime('%Y-%m-%d'),"asset_name":asset_name,"prediction_name":prediction_name}
         print(f"Predict data  with {request_data}")  
-        result=forecast_asset_movement(request_data) 
-        print(f"========================================{result}==================================================================")
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+        # result=forecast_asset_movement(request_data) 
+        # print(result)
+        print(f"========================================================================================================================")
