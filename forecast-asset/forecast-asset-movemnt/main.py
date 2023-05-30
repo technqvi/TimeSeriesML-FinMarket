@@ -42,13 +42,13 @@ def forecast_asset_movement(request):
     asset_name="SPY"
     prediction_name='EMA1'
 
-    # model_path="model/model-ema1/EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5"
-    # scale_input_path="model/model-ema1/scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
-    # scale_output_path="model/model-ema1/scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
+    model_path="model/model-ema1/EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5"
+    scale_input_path="model/model-ema1/scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
+    scale_output_path="model/model-ema1/scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
 
-    model_path="gs://demo-ts-forecast-pongthorn/model-ema1/EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5"
-    scale_input_path="gs://demo-ts-forecast-pongthorn/model-ema1/scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
-    scale_output_path="gs://demo-ts-forecast-pongthorn/model-ema1/scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
+    # model_path="gs://demo-ts-forecast-pongthorn/model-ema1/EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5"
+    # scale_input_path="gs://demo-ts-forecast-pongthorn/model-ema1/scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
+    # scale_output_path="gs://demo-ts-forecast-pongthorn/model-ema1/scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
 
 
     # # Declare and Initialize Variable
@@ -87,6 +87,7 @@ def forecast_asset_movement(request):
         print(x_model.summary())
     except Exception as ex:
         print(str(ex))
+        raise Exception(str(ex))
 
     try:
         print("Scaler Max-Min")
@@ -99,6 +100,7 @@ def forecast_asset_movement(request):
 
     except Exception as ex:
         print(str(ex))
+        raise Exception(str(ex))
 
 
     print("=====================================================================================================")
