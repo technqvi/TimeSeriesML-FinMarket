@@ -46,9 +46,10 @@ def forecast_asset_movement(request):
     scale_input_path="model/model-ema1/scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
     scale_output_path="model/model-ema1/scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
 
-    # model_path="gs://demo-ts-forecast-pongthorn/model-ema1/EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5"
-    # scale_input_path="gs://demo-ts-forecast-pongthorn/model-ema1/scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
-    # scale_output_path="gs://demo-ts-forecast-pongthorn/model-ema1/scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
+    #model_path="gs://demo-ts-forecast-pongthorn/model-ema1/EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5"
+    # Error on GC
+    #scale_input_path="gs://demo-ts-forecast-pongthorn/model-ema1/scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
+    #scale_output_path="gs://demo-ts-forecast-pongthorn/model-ema1/scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
 
 
     # # Declare and Initialize Variable
@@ -309,16 +310,6 @@ def forecast_asset_movement(request):
 
 # In[ ]:
 
-
-# gcloud functions deploy forecast-fin-asset-ts-movement  --gen2  --region=asia-southeast1  --runtime=python39  
-# --memory=1024 --source=.    --trigger-http   --entry-point  forecast_asset_movement --timeout 1200s
-
-# curl -m 70 -X POST https://forecast-fin-asset-ts-movement-qulerxpcqq-as.a.run.app \
-# -H "Authorization: bearer $(gcloud auth print-identity-token)" \
-# -H "Content-Type: application/json" \
-# -d '{
-#   "name": "Hello World"
-# }'
 
 
 
