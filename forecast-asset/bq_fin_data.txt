@@ -53,5 +53,12 @@ cluster  : Date,Symbol
     "type": "FLOAT",
     "description": null,
     "fields": []
+  },
+  {
+    "name": "ImportDateTime",
+    "mode": "NULLABLE",
+    "type": "DATETIME",
+    "description": null,
+    "fields": []
   }
 ]
