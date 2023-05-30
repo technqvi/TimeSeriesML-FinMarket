@@ -310,6 +310,16 @@ def forecast_asset_movement(request):
 # In[ ]:
 
 
+# gcloud functions deploy forecast-fin-asset-ts-movement  --gen2  --region=asia-southeast1  --runtime=python39  
+# --memory=1024 --source=.    --trigger-http   --entry-point  forecast_asset_movement --timeout 1200s
+
+# curl -m 70 -X POST https://forecast-fin-asset-ts-movement-qulerxpcqq-as.a.run.app \
+# -H "Authorization: bearer $(gcloud auth print-identity-token)" \
+# -H "Content-Type: application/json" \
+# -d '{
+#   "name": "Hello World"
+# }'
+
 
 
 
