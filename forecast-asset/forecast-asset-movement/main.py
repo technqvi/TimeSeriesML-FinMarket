@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[29]:
 
 
 import pandas as pd
@@ -10,16 +10,28 @@ import os
 from datetime import datetime,date,timedelta
 import json
 
+# import matplotlib.pyplot as plt
+# import matplotlib.dates as mdates
+# import seaborn as sns
 
 from tensorflow.keras.models import load_model
 import joblib
 
+
+from google.cloud import storage
 from google.cloud import bigquery
+from google.oauth2 import service_account
 from google.cloud.exceptions import NotFound
 from google.api_core.exceptions import BadRequest
 
+# how client call could function 
+#https://www.geeksforgeeks.org/how-to-use-google-cloud-function-with-python/
+#https://medium.com/google-cloud/setup-and-invoke-cloud-functions-using-python-e801a8633096
+#https://codelabs.developers.google.com/codelabs/cloud-functions-python-http#6
+#https://stackoverflow.com/questions/61573102/calling-a-google-cloud-function-from-within-python
 
-# In[4]:
+
+# In[30]:
 
 
 import functions_framework
@@ -35,26 +47,105 @@ def forecast_asset_movement(request):
 
 # # Parameter
 
-# In[3]:
+# In[31]:
 
 
     today='2023-04-28'
     asset_name="SPY"
     prediction_name='EMA1'
+    loadModelMode='gcs'   # local,gcs
 
-    model_path="model/model-ema1/EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5"
-    scale_input_path="model/model-ema1/scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
-    scale_output_path="model/model-ema1/scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
 
-    #model_path="gs://demo-ts-forecast-pongthorn/model-ema1/EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5"
-    # Error on GC
-    #scale_input_path="gs://demo-ts-forecast-pongthorn/model-ema1/scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
-    #scale_output_path="gs://demo-ts-forecast-pongthorn/model-ema1/scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
+    # # Load model and scaler
+
+    # In[32]:
+
+
+    model_file="EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5"
+    scaler_file="scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
+    scalerPred_file="scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz"
+
+    if loadModelMode=='local':
+     objectPaht="model/model-ema1"
+    else:
+     objectPaht="gs://demo-ts-forecast-pongthorn/model-ema1"   
+
+
+    model_path=f"{objectPaht}/{model_file}"
+    scale_input_path=f"{objectPaht}/{scaler_file}"
+    scale_output_path=f"{objectPaht}/{scalerPred_file}"
+
+    print(f"load model from {loadModelMode}")   
+    print(model_path)
+    print(scale_input_path)
+    print(scale_output_path)
+
+
+
+    # In[ ]:
+
+
+
+
+
+    # In[33]:
+
+
+    if loadModelMode=='local':
+        try:
+            print("Model and Scaler Object Summary")
+            x_model = load_model(model_path)
+        except Exception as ex:
+            print(str(ex))
+            raise Exception(str(ex)) 
+
+        try:
+            print("Scaler Max-Min")
+            x_scaler = joblib.load(scale_input_path)
+            x_scalerPred=joblib.load(scale_output_path)
+
+        except Exception as ex:
+            print(str(ex))
+            raise Exception(str(ex))
+
+        print("=====================================================================================================")
+
+
+    # In[34]:
+
+
+    if loadModelMode=='gcs':
+     try:    
+        gcs_client = storage.Client()
+
+        with open(scaler_file, 'wb') as scaler_f, open(scalerPred_file, 'wb') as scaler_pred_f,open(model_file, 'wb') as model_f:
+            gcs_client.download_blob_to_file(scale_input_path, scaler_f
+            )
+            gcs_client.download_blob_to_file(scale_output_path, scaler_pred_f
+            )
+            gcs_client.download_blob_to_file(model_path, model_f
+            )
+
+        x_scaler = joblib.load(scaler_file)
+        x_scalerPred=joblib.load(scalerPred_file)
+        x_model = load_model(model_file)
+     except Exception as ex:
+        print(str(ex))
+        raise Exception(str(ex))
+
+
+    # In[35]:
+
+
+    print(x_model.summary())
+    #(max - min) / (X.max(axis=0) - X.min(axis=0))
+    print(f"max={x_scaler.data_max_} and min={x_scaler.data_min_} and scale={x_scaler.scale_}")
+    print(f"max={x_scalerPred.data_max_} and min={x_scalerPred.data_min_} and scale={x_scalerPred.scale_}")
 
 
     # # Declare and Initialize Variable
 
-    # In[5]:
+    # In[36]:
 
 
     date_col='Date'
@@ -75,41 +166,9 @@ def forecast_asset_movement(request):
     print(dtStr_imported)
 
 
-    # # Load model and scaler
-
-    # In[11]:
-
-
-    print(f"Load model and scaler - {prediction_name}")
-
-    try:
-        print("Model and Scaler Object Summary")
-        x_model = load_model(model_path)
-        print(x_model.summary())
-    except Exception as ex:
-        print(str(ex))
-        raise Exception(str(ex))
-
-    try:
-        print("Scaler Max-Min")
-        x_scaler = joblib.load(scale_input_path)
-        x_scalerPred=joblib.load(scale_output_path)
-
-        #(max - min) / (X.max(axis=0) - X.min(axis=0))
-        print(f"max={x_scaler.data_max_} and min={x_scaler.data_min_} and scale={x_scaler.scale_}")
-        print(f"max={x_scalerPred.data_max_} and min={x_scalerPred.data_min_} and scale={x_scalerPred.scale_}")
-
-    except Exception as ex:
-        print(str(ex))
-        raise Exception(str(ex))
-
-
-    print("=====================================================================================================")
-
-
     # # BigQuery Setting
 
-    # In[12]:
+    # In[37]:
 
 
     projectId='pongthorn'
@@ -128,14 +187,14 @@ def forecast_asset_movement(request):
 
     # # Query Fin Data from BQ
 
-    # In[13]:
+    # In[38]:
 
 
     dayAgo=datetime.strptime(today,'%Y-%m-%d') +timedelta(days=-nLastData)
     print(f"Get data from {dayAgo.strftime('%Y-%m-%d')} - {today} as input to forecast")
 
 
-    # In[14]:
+    # In[39]:
 
 
     sql=f"""
@@ -160,6 +219,27 @@ def forecast_asset_movement(request):
         return "no enough data"
 
 
+    # In[40]:
+
+
+    # plt.subplots(2, 1, figsize = (20, 10),sharex=True)
+
+    # ax1 = plt.subplot(2, 1, 1)
+    # plt.plot(df[['Close','EMA1','EMA2']])
+    # plt.ylabel('Price & EMA')
+
+    # ax2 = plt.subplot(2, 1, 2)
+    # plt.plot(df[['MACD','SIGNAL']])
+    # plt.xlabel('Date')
+    # plt.ylabel('MACD & Signal')
+
+    # plt.show()
+
+
+    # # Get only Feature( 1 Indicator) to Predict itself in the next N days
+
+    # In[41]:
+
 
     print(f"Get Feature to Predict : {prediction_col} ")
     dfForPred=df[feature_cols]
@@ -177,7 +257,7 @@ def forecast_asset_movement(request):
 
     # # Make Pediction
 
-    # In[17]:
+    # In[42]:
 
 
     xUnscaled=dfForPred.values #print(xUnscaled.shape)
@@ -185,6 +265,16 @@ def forecast_asset_movement(request):
     print(xScaled.shape)
     print(xScaled[-5:])
 
+    # # Way1
+    # xScaledToPredict = []
+    # xScaledToPredict.append(xScaled)
+    # print(len(xScaledToPredict))
+
+    # yPredScaled=x_model.predict(np.array(xScaledToPredict))
+    # print(yPredScaled.shape,yPredScaled)
+
+    # yPred  = x_scalerPred.inverse_transform(yPredScaled.reshape(-1, 1))
+    # print(yPred.shape,yPred)
 
     #Way2
     xScaledToPredict= xScaled.reshape(1,input_sequence_length,len(feature_cols))
@@ -212,7 +302,7 @@ def forecast_asset_movement(request):
 
     # ## Feature Data
 
-    # In[18]:
+    # In[43]:
 
 
     dfFeature=pd.DataFrame(data= xUnscaled,columns=feature_cols,index=dfForPred.index)
@@ -224,7 +314,7 @@ def forecast_asset_movement(request):
 
     # ## Forecast Value Data
 
-    # In[19]:
+    # In[44]:
 
 
     lastRowOfFeature=dfFeature.index.max()
@@ -241,7 +331,7 @@ def forecast_asset_movement(request):
 
     # # Get Prepraed To ingest data into BQ , we have to create dataframe and convert to Json-Rowns
 
-    # In[20]:
+    # In[45]:
 
 
     outputDF=pd.DataFrame(data=[ [today,asset_name,prediction_col,dtStr_imported] ],columns=["prediction_date","asset_name","prediction_name","pred_timestamp"])
@@ -249,7 +339,7 @@ def forecast_asset_movement(request):
     print(outputDF)
 
 
-    # In[21]:
+    # In[46]:
 
 
     jsonOutput = json.loads(outputDF.to_json(orient = 'records'))
@@ -274,7 +364,7 @@ def forecast_asset_movement(request):
 
     # # Ingest Data to BigQuery 
 
-    # In[22]:
+    # In[47]:
 
 
     try:
@@ -302,7 +392,7 @@ def forecast_asset_movement(request):
     #job_config.schema
 
 
-    # In[33]:
+    # In[48]:
 
 
     return   'completed job.'
@@ -314,7 +404,7 @@ def forecast_asset_movement(request):
 
 
 
-# In[34]:
+# In[49]:
 
 
 # # indent method
