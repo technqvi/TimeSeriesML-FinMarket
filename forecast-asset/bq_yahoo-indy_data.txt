@@ -1,7 +1,7 @@
 pongthorn.FinAssetForecast
 fin_data
 
-partition : Date
+partition : 
 cluster  : Date,Symbol
 
 [
