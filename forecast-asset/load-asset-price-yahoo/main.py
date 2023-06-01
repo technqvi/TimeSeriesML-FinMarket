@@ -59,17 +59,19 @@ def load_asset_price_yahoo(request):
 
 
     source='yahoo'  # csv / yahoo
+    my_tz='Asia/Bangkok'
     #write_method='WRITE_EMPTY' #'WRITE_TRUNCATE'
     write_method='WRITE_APPEND'
 
 
     # In[248]:
 
-
     symbol_list= symbol_str_list.split(',')
 
-    import_dt=datetime.now(pytz.timezone('Asia/Bangkok'))
+    import_dt=datetime.now() 
+    #import_dt=datetime.now(pytz.timezone('Asia/Bangkok'))
     #import_dt=datetime.now(pytz.utc)
+
     if  start_date=='' and end_date=='':
       start_date=(import_dt+timedelta(days=-1)).strftime("%Y-%m-%d")
       end_date= import_dt.strftime("%Y-%m-%d")
@@ -148,6 +150,7 @@ def load_asset_price_yahoo(request):
         dfCSV=dfCSV.drop_duplicates(subset=['Date','Symbol'],keep='last')
         dfCSV=build_indicator_feature(dfCSV)
         dfCSV['ImportDateTime']=import_dt
+        dfCSV['ImportDateTime']=dfCSV['ImportDateTime'].dt.tz_localize('utc').dt.tz_convert(my_tz)
         print(dfCSV.info())
         importDataToBQ(dfCSV)
 
@@ -206,6 +209,8 @@ def load_asset_price_yahoo(request):
               #return  msg
         if dfMain.empty==False:
             dfMain['ImportDateTime']=import_dt
+            # dfMain['ImportDateTime']=dfMain['ImportDateTime'].dt.tz_localize(my_tz) 
+            dfMain['ImportDateTime']=dfMain['ImportDateTime'].dt.tz_localize('utc').dt.tz_convert(my_tz)
             print(dfMain.info())
             #dfMain
             importDataToBQ(dfMain)
