@@ -17,3 +17,9 @@ functions-framework --target=load_asset_price_yahoo
 
 
 
+SELECT ImportDateTime , count(*) FROM `pongthorn.FinAssetForecast.fin_data` group by ImportDateTime
+
+delete from `pongthorn.FinAssetForecast.fin_data`  where ImportDateTime='2023-06-01T00:04:46.189426'
+
+
+

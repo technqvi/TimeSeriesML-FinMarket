@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 import os
 from datetime import datetime,date,timedelta
+import pytz
 
 import yfinance as yf
 
@@ -66,7 +67,9 @@ def load_asset_price_yahoo(request):
 
 
     symbol_list= symbol_str_list.split(',')
-    import_dt=datetime.now()
+
+    import_dt=datetime.now(pytz.timezone('Asia/Bangkok'))
+    #import_dt=datetime.now(pytz.utc)
     if  start_date=='' and end_date=='':
       start_date=(import_dt+timedelta(days=-1)).strftime("%Y-%m-%d")
       end_date= import_dt.strftime("%Y-%m-%d")
