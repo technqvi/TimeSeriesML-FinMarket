@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[29]:
+# In[52]:
 
 
 import pandas as pd
 import numpy as np
 import os
-from datetime import datetime,date,timedelta
+from datetime import datetime,date,timedelta,timezone
+import pytz
 import json
 
 # import matplotlib.pyplot as plt
@@ -17,48 +18,55 @@ import json
 from tensorflow.keras.models import load_model
 import joblib
 
-
 from google.cloud import storage
 from google.cloud import bigquery
 from google.oauth2 import service_account
 from google.cloud.exceptions import NotFound
 from google.api_core.exceptions import BadRequest
 
-# how client call could function 
-#https://www.geeksforgeeks.org/how-to-use-google-cloud-function-with-python/
-#https://medium.com/google-cloud/setup-and-invoke-cloud-functions-using-python-e801a8633096
-#https://codelabs.developers.google.com/codelabs/cloud-functions-python-http#6
-#https://stackoverflow.com/questions/61573102/calling-a-google-cloud-function-from-within-python
 
-
-# In[30]:
+# In[53]:
 
 
 import functions_framework
 @functions_framework.http
 def forecast_asset_movement(request):
 
-#name = request.args.get("today", "today")
-# if   request is not None:  
-#     today=request["today"]
-#     asset_name=request["asset_name"]
-#     prediction_name=request["prediction_name"]
+
+    # # Parameter
+
+    # In[77]:
 
 
-# # Parameter
+    #name = request.args.get("today", "today")
+    #https://stackoverflow.com/questions/61573102/calling-a-google-cloud-function-from-within-python
+    #https://medium.com/google-cloud/setup-and-invoke-cloud-functions-using-python-e801a8633096
+    print("JSON Info") # Post Method
+    request_json = request.get_json()
+    print(request_json)
 
-# In[31]:
+    # print(f"TODAY Request :{request_json['TODAY']}")
+    # print(f"ASSET Request :{request_json['ASSET']}")
+    # print(f"PREDICTION Request :{request_json['PREDICTION']}")
+    print("==================================================")
 
+    print("Value Info")
+    print(request.values)
 
-    today='2023-04-28'
-    asset_name="SPY"
-    prediction_name='EMA1'
+    print("Enviroment Variable")
+    today=os.environ.get('TODAY', '') 
+    #today=os.environ.get('TODAY', '2023-04-28')  
+    asset_name=os.environ.get('ASSET', 'SPY')
+    prediction_name=os.environ.get('PREDICTION','EMA1')
+    print(f"{today} - {asset_name} -{prediction_name}")
+    print("==================================================")
+
     loadModelMode='gcs'   # local,gcs
 
 
     # # Load model and scaler
 
-    # In[32]:
+    # In[78]:
 
 
     model_file="EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5"
@@ -82,13 +90,7 @@ def forecast_asset_movement(request):
 
 
 
-    # In[ ]:
-
-
-
-
-
-    # In[33]:
+    # In[79]:
 
 
     if loadModelMode=='local':
@@ -111,7 +113,7 @@ def forecast_asset_movement(request):
         print("=====================================================================================================")
 
 
-    # In[34]:
+    # In[80]:
 
 
     if loadModelMode=='gcs':
@@ -134,7 +136,7 @@ def forecast_asset_movement(request):
         raise Exception(str(ex))
 
 
-    # In[35]:
+    # In[81]:
 
 
     print(x_model.summary())
@@ -145,7 +147,7 @@ def forecast_asset_movement(request):
 
     # # Declare and Initialize Variable
 
-    # In[36]:
+    # In[82]:
 
 
     date_col='Date'
@@ -161,14 +163,15 @@ def forecast_asset_movement(request):
     colOutput='prediction'
 
 
-    dt_imported=datetime.now()
+    # dt_imported=datetime.now()
+    dt_imported=datetime.now(timezone.utc)
     dtStr_imported=dt_imported.strftime("%Y-%m-%d %H:%M:%S")
     print(dtStr_imported)
 
 
     # # BigQuery Setting
 
-    # In[37]:
+    # In[83]:
 
 
     projectId='pongthorn'
@@ -184,42 +187,85 @@ def forecast_asset_movement(request):
     # client = bigquery.Client(project=projectId,credentials=credentials )
     client = bigquery.Client(project=projectId )
 
+    def load_data_bq(sql:str):
+     query_result=client.query(sql)
+     df=query_result.to_dataframe()
+     return df
+
 
     # # Query Fin Data from BQ
 
-    # In[38]:
+    # In[84]:
+
+
+    if today=='':
+        sqlLastDate=f""" select max(Date) as LastDate  from `{table_data_id}` where Symbol='{asset_name}' """
+        results = client.query(sqlLastDate)
+
+        for row in results:
+            lastDate=row['LastDate']    
+            if  lastDate == None:
+             raise Exception(f"Not found price data  of {asset_name}")
+            lastDate=lastDate.strftime('%Y-%m-%d')
+
+
+        today=lastDate
+        print(f"Last Price of  {asset_name} at {today}")
+
+
+    # In[85]:
+
+
+    print(f"Get last price of {asset_name}")
+    sqlLastPred=f"""select prediction_date,asset_name,prediction_name,pred_timestamp from `{table_id}` 
+    where prediction_date='{today}' and   asset_name='{asset_name}'
+    order by pred_timestamp 
+    """
+    print(sqlLastPred)
+    dfLastPred=load_data_bq(sqlLastPred)
+    if dfLastPred.empty==False:
+       dfLastPred=dfLastPred.drop_duplicates(subset=['prediction_date','asset_name','prediction_name'],keep='last') 
+       print(f"{asset_name}-{prediction_col}-{today} has been predicted price movement")
+       print(dfLastPred)
+       return "there is one record of prediction price movement."
+    else:
+       print(f"{asset_name}-{prediction_col} at {today} has not been predicted price movement yet.") 
+
+
+    # In[86]:
 
 
     dayAgo=datetime.strptime(today,'%Y-%m-%d') +timedelta(days=-nLastData)
     print(f"Get data from {dayAgo.strftime('%Y-%m-%d')} - {today} as input to forecast")
 
 
-    # In[39]:
+    # In[87]:
 
 
     sql=f"""
     SELECT  *  FROM `{table_data_id}`  
     Where  {date_col} between  DATE_SUB(DATE '{today}', INTERVAL {nLastData} DAY) 
-    and '{today}' and Symbol='{asset_name}' order by {date_col}
+    and '{today}' and Symbol='{asset_name}' order by {date_col},ImportDateTime
     """
     print(sql)
     query_result=client.query(sql)
     df=query_result.to_dataframe()
 
+    df=df.drop_duplicates(subset=[date_col,'Symbol'],keep='last')
     df[date_col]=pd.to_datetime(df[date_col],format='%Y-%m-%d')
     df.set_index(date_col,inplace=True)
 
     print(df.info())
 
-    print(df.head())
-    print(df.tail())
+    print(df[['Symbol','Close' ,'ImportDateTime']].head())
+    print(df[['Symbol','Close' ,'ImportDateTime']].tail())
 
     if df.empty==True or len(df)<input_sequence_length:
         print(f"There is enough data to make prediction during {dayAgo.strftime('%Y-%m-%d')} - {today}")
-        return "no enough data"
+        return "no enough data."
 
 
-    # In[40]:
+    # In[88]:
 
 
     # plt.subplots(2, 1, figsize = (20, 10),sharex=True)
@@ -238,7 +284,7 @@ def forecast_asset_movement(request):
 
     # # Get only Feature( 1 Indicator) to Predict itself in the next N days
 
-    # In[41]:
+    # In[89]:
 
 
     print(f"Get Feature to Predict : {prediction_col} ")
@@ -255,9 +301,9 @@ def forecast_asset_movement(request):
     # plt.show()
 
 
-    # # Make Pediction
+    # # Make Pediction as Forecast
 
-    # In[42]:
+    # In[90]:
 
 
     xUnscaled=dfForPred.values #print(xUnscaled.shape)
@@ -302,7 +348,7 @@ def forecast_asset_movement(request):
 
     # ## Feature Data
 
-    # In[43]:
+    # In[91]:
 
 
     dfFeature=pd.DataFrame(data= xUnscaled,columns=feature_cols,index=dfForPred.index)
@@ -314,7 +360,7 @@ def forecast_asset_movement(request):
 
     # ## Forecast Value Data
 
-    # In[44]:
+    # In[92]:
 
 
     lastRowOfFeature=dfFeature.index.max()
@@ -331,7 +377,7 @@ def forecast_asset_movement(request):
 
     # # Get Prepraed To ingest data into BQ , we have to create dataframe and convert to Json-Rowns
 
-    # In[45]:
+    # In[93]:
 
 
     outputDF=pd.DataFrame(data=[ [today,asset_name,prediction_col,dtStr_imported] ],columns=["prediction_date","asset_name","prediction_name","pred_timestamp"])
@@ -339,7 +385,7 @@ def forecast_asset_movement(request):
     print(outputDF)
 
 
-    # In[46]:
+    # In[94]:
 
 
     jsonOutput = json.loads(outputDF.to_json(orient = 'records'))
@@ -364,7 +410,7 @@ def forecast_asset_movement(request):
 
     # # Ingest Data to BigQuery 
 
-    # In[47]:
+    # In[95]:
 
 
     try:
@@ -392,7 +438,7 @@ def forecast_asset_movement(request):
     #job_config.schema
 
 
-    # In[48]:
+    # In[96]:
 
 
     return   'completed job.'
@@ -404,48 +450,9 @@ def forecast_asset_movement(request):
 
 
 
-# In[49]:
+# In[97]:
 
 
-# # indent method
-# # uncomment both return statement
-
-# if __name__ == "__main__":
-
-# start_pred_date='2023-04-28'  # to make predictoin of 02 May 23
-# table_date_id="pongthorn.FinAssetForecast.fin_data"
-# asset_name='SPY'
-# prediction_name='EMA1'
-
-# projectId='pongthorn'
-# json_credential_file=r'C:\Windows\pongthorn-5decdc5124f5.json'
-# credentials = service_account.Credentials.from_service_account_file(json_credential_file)
-# client = bigquery.Client(project=projectId,credentials=credentials )
-
-# sqlXYZ=f"""
-# SELECT  Date  FROM `{table_data_id}`  
-# Where  Date >= '{start_pred_date}' and Symbol='{asset}' order by Date
-# """
-# print(sqlXYZ)
-# query_result=client.query(sqlXYZ)
-# dfXYZ=query_result.to_dataframe()
-
-# for idx,row in dfXYZ.iterrows():
-#     x_day=row["Date"]
-#     request_data={"today":x_day.strftime('%Y-%m-%d'),"asset_name":asset_name,"prediction_name":prediction_name}
-#     print(f"Predict data  with {request_data}")  
-#     # result=forecast_asset_movement(request_data) 
-#     # print(result)
-#     print(f"========================================================================================================================")
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
