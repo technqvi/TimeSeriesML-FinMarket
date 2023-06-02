@@ -1,0 +1,3 @@
+﻿model_id,asset,prediction,gs_model_path,model_file,scaler_file,scaler_pred_file
+spy-ema1,SPY,EMA1,gs://demo-ts-forecast-pongthorn/model-ema1,EMA1_60To10_SPY_E150S20-Y2015-2023_ma.h5,scaler_EMA1_60To10_SPY_E150S20-Y2015-2023.gz,scaler_pred_EMA1_60To10_SPY_E150S20-Y2015-2023.gz
+spy-signal,SPY,SIGNAL,gs://demo-ts-forecast-pongthorn/model-signal,SIGNAL_60To10_SPY_E150S20-Y2015-2023_ma.h5,scaler_SIGNAL_60To10_SPY_E150S20-Y2015-2023.gz,scaler_pred_SIGNAL_60To10_SPY_E150S20-Y2015-2023.gz
