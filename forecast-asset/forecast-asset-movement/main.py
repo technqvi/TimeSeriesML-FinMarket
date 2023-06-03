@@ -219,18 +219,27 @@ def forecast_asset_movement(request):
     # In[71]:
 
 
+    lastDate=None
     if today=='':
         sqlLastDate=f""" select max(Date) as LastDate  from `{table_data_id}` where Symbol='{asset_name}' """
-        results = client.query(sqlLastDate)
 
-        for row in results:
-            lastDate=row['LastDate']    
-            if  lastDate == None:
-             raise Exception(f"Not found price data  of {asset_name}")
-            lastDate=lastDate.strftime('%Y-%m-%d')
+    else:
+        sqlLastDate=f""" 
+        select Date as LastDate  from `{table_data_id}` where Symbol='{asset_name}' 
+        and Date='{today}'
+        """
+    print(sqlLastDate)
+    results = client.query(sqlLastDate)
+    dfLastDate=results.to_dataframe()
+    print(dfLastDate)
+    if dfLastDate.empty:
+        print( f"Not found price data at {today}  of {asset_name}")
+        return f"Not found price data at {today}  of {asset_name}"
+    else:
+        today=dfLastDate.iloc[0,0]
 
-        today=lastDate
-        print(f"Last Price of  {asset_name} at {today}")
+
+    print(f"Forecast {prediction_col} movement of  {asset_name} at {today}")
 
 
     # In[73]:
