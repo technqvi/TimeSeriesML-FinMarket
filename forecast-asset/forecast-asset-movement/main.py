@@ -236,7 +236,8 @@ def forecast_asset_movement(request):
         print( f"Not found price data at {today}  of {asset_name}")
         return f"Not found price data at {today}  of {asset_name}"
     else:
-        today=dfLastDate.iloc[0,0]
+       lastDate=dfLastDate.iloc[0,0]
+       today=lastDate.strftime('%Y-%m-%d')
 
 
     print(f"Forecast {prediction_col} movement of  {asset_name} at {today}")
