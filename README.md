@@ -19,8 +19,7 @@ This project is about how to build time-series machine leaning to predict asset 
 
 ### [forecast-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset)
 #### [load_price_asset_yahoo](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/load_asset_price_yahoo.ipynb)
-* [load-asset-price-yahoo] (https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset/load-asset-price-yahoo)
-* [forecast-asset-movement](google cloud function)](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset/forecast-asset-movement)(google cloud function)
+* [load-asset-price-yahoo](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset/load-asset-price-yahoo)(google cloud function)
 #### [forecast_asset_movement.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/forecast_asset_movement.ipynb)
 * [forecast-asset-movement](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset/forecast-asset-movement)(google cloud function)
 #### [visualize_forecast_ts](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/visualize_forecast_ts.ipynb)
