@@ -46,7 +46,7 @@ This project is about how to build time-series machine leaning to predict asset 
 #### [invoke_forecast_gcf](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/invoke_forecast_gcf.ipynb)
 #### [model](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset/model)
 
-## [lstm-fin-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset)
+## [Practice creating TS-Model by Examples](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset)
 click  link to see detail.
 
 ### [data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/data)
