@@ -18,7 +18,7 @@ This project is about how to build time-series machine leaning to predict asset 
 - SourceCode: [006 Time Series Forecasting - Multi-Output Regression.ipynb](https://github.com/flo7up/relataly-public-python-tutorials/blob/master/01%20Time%20Series%20Forecasting%20%26%20Regression/006%20Multi-Output%20Regression.ipynb)
 
 ## [Forecast-Asset from Trained Model](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset)
-#### [Load Daily Price From Yahoo](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/load_daily_price_from_yahoo.ipynb)
+#### [load_daily_price_from_yahoo.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/load_daily_price_from_yahoo.ipynb)
 * There are 2 options to load price data to GoogleBiquery.
 * Option#1 Export data price from Amibroker as csv file and load it to bigquery.
 * Option#2 Pull data price from [finance.yahoo.com](https://finance.yahoo.com/) by using [yfinance](https://github.com/ranaroussi/yfinance) as dataframe and load it to bigquery 
