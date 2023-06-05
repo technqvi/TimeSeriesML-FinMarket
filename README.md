@@ -7,7 +7,7 @@ This project is about how to build time-series machine leaning to predict asset 
 
 ## Main-Section
 
-### [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)
+## [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)
 #### Overview
 - This is one of the core files on this repo,  we apply the LSTM model to build time-series forecasting to take prices over the past 60 days to predict prices in the next 10 days.
 - The first cell of this file include steps to build model from loading data to making prediction to unseen data.
@@ -17,7 +17,7 @@ This project is about how to build time-series machine leaning to predict asset 
 - Document: [Stock Market Forecasting Neural Networks for Multi-Output Regression in Python](https://www.relataly.com/stock-price-prediction-multi-output-regression-using-neural-networks-in-python/5800/)
 - SourceCode: [006 Time Series Forecasting - Multi-Output Regression.ipynb](https://github.com/flo7up/relataly-public-python-tutorials/blob/master/006%20Time%20Series%20Forecasting%20-%20Multi-Output%20Regression.ipynb)
 
-## [forecast-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset)
+## [Forecast-Asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset)
 #### [load_price_asset_yahoo](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/load_asset_price_yahoo.ipynb)
 * [load-asset-price-yahoo](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset/load-asset-price-yahoo)(google cloud function)
 #### [forecast_asset_movement.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/forecast_asset_movement.ipynb)
@@ -28,7 +28,7 @@ This project is about how to build time-series machine leaning to predict asset 
 
 
 
-### [lstm-tune-dev](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-tune-dev)
+## [lstm-tune-dev](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-tune-dev)
 #### [Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb)
 
 - [Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb) :  To find optimal hypperparamter to get the best model, we apply KerasTuner to perform this thing. we tuned 2 stuff ,   Input-Unit on hidden layer and Dropout-Rate . we added tuning code part(Training the TUNED Model) into this file. The remaining  is  the same as  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb) 
@@ -43,7 +43,7 @@ This project is about how to build time-series machine leaning to predict asset 
  
 
 
-### [lstm-fin-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset)
+## [lstm-fin-asset](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset)
 click  link to see detail.
 
 ### [data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/data)
