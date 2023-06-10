@@ -1,3 +1,8 @@
+tranform to cloud-funtoin
+indent mehton
+uncomment return
+remove visualize
+
 gcloud functions deploy forecast-fin-asset-ts-movement  --gen2  --region=asia-southeast1  --runtime=python39  --memory=1024 --source=.  --env-vars-file .env.yaml  --trigger-http   --entry-point  forecast_asset_movement --timeout 1200s
 
 functions-framework --target=forecast_asset_movement
@@ -7,7 +12,9 @@ curl -m 1210 -X POST https://forecast-fin-asset-ts-movement-qulerxpcqq-as.a.run.
 -H "Content-Type: application/json" \
 -d '{
   "TODAY": "" ,
-  "MODEL_ID": "spy-ema1"
+  "MODEL_ID": "spy-ema1-60t10",
+  "INPUT_SL": "60",
+  "OUTPUT_SL": "10"
 }'
 
 
@@ -29,8 +36,11 @@ User-Agent    Google-Cloud-Scheduler
 Body
 {
   "TODAY": "" ,
-  "MODEL_ID": "spy-ema1"
+  "MODEL_ID": "spy-ema1-60t10",
+  "INPUT_SL": "60",
+  "OUTPUT_SL": "10"
 }
+
 
 
 authen

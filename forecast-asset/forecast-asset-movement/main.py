@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[40]:
+# In[110]:
 
 
 import pandas as pd
@@ -11,9 +11,7 @@ from datetime import datetime,date,timedelta,timezone
 import pytz
 import json
 
-# import matplotlib.pyplot as plt
-# import matplotlib.dates as mdates
-# import seaborn as sns
+
 
 from tensorflow.keras.models import load_model
 import joblib
@@ -25,8 +23,13 @@ from google.cloud.exceptions import NotFound
 from google.api_core.exceptions import BadRequest
 
 
-# In[62]:
+# In[111]:
 
+
+# uncomment the following section and chage mode to gcs
+# fuction
+# json and env if/else
+# return statment
 
 import functions_framework
 @functions_framework.http
@@ -35,37 +38,38 @@ def forecast_asset_movement(request):
 
     # # Parameter
 
-    # In[84]:
+    loadModelMode='gcs'   # local,gcs
 
-
-    #https://stackoverflow.com/questions/61573102/calling-a-google-cloud-function-from-within-python
-    #https://medium.com/google-cloud/setup-and-invoke-cloud-functions-using-python-e801a8633096
-    #https://medium.com/google-cloud/gcp-cloud-functions-develop-it-the-right-way-82e633b07756
-
-    model_id='spy-ema1'
-    today=''
+    model_id='qqq-ema1-30t5'
+    today='2023-06-02'
+    input_sequence_length =30
+    output_sequence_length =5
 
     if request.get_json():
         print("JSON Post Date Info") # Post Method
         request_json = request.get_json()
         today=request_json['TODAY']
         model_id=request_json['MODEL_ID']
+        input_sequence_length=int(request_json['INPUT_SL'])
+        output_sequence_length=int(request_json['OUTPUT_SL'])
     else:
         print("Enviroment Variable Info")
         today=os.environ.get('TODAY', '') 
         #today=os.environ.get('TODAY', '2023-04-28')  
         model_id=os.environ.get('MODEL_ID', 'spy-ema1')  
+        input_sequence_length=int(os.environ.get('INPUT_SL', '60') ) 
+        output_sequence_length=int(os.environ.get('OUTPUT_SL', '10'))   
+
     print("List parameter as belows")
     print(f"today={today}")
     print(f"model_id={model_id}")
+    print(f"input {input_sequence_length} rows to predict output {output_sequence_length}")
 
-
-    loadModelMode='gcs'   # local,gcs
 
 
     # # BigQuery Setting
 
-    # In[64]:
+    # In[113]:
 
 
     projectId='pongthorn'
@@ -91,7 +95,7 @@ def forecast_asset_movement(request):
 
     # # Load Model MetaData Configuration
 
-    # In[65]:
+    # In[114]:
 
 
     sqlModelMt=f"""
@@ -103,7 +107,13 @@ def forecast_asset_movement(request):
         modelMeta=dfModelMeta.iloc[0,:]
         asset_name=modelMeta['asset']
         prediction_name=modelMeta['prediction']
+
+        input_sequence_length=int(modelMeta['input_sequence_length'])
+        output_sequence_length=int(modelMeta['output_sequence_length'])
+
         model_path=modelMeta['gs_model_path']
+        local_model_path=modelMeta['local_model_path']
+
         model_file=modelMeta['model_file']
         scaler_file=modelMeta['scaler_file']
         scalerPred_file=modelMeta['scaler_pred_file']
@@ -120,11 +130,11 @@ def forecast_asset_movement(request):
 
     # # Load model and scaler
 
-    # In[66]:
+    # In[115]:
 
 
     if loadModelMode=='local':
-     objectPaht="model/model-ema1"
+     objectPaht=local_model_path
     else:
      objectPaht=model_path  
 
@@ -139,7 +149,7 @@ def forecast_asset_movement(request):
 
 
 
-    # In[67]:
+    # In[116]:
 
 
     if loadModelMode=='local':
@@ -162,7 +172,7 @@ def forecast_asset_movement(request):
         print("=====================================================================================================")
 
 
-    # In[68]:
+    # In[117]:
 
 
     if loadModelMode=='gcs':
@@ -185,7 +195,7 @@ def forecast_asset_movement(request):
         raise Exception(str(ex))
 
 
-    # In[69]:
+    # In[118]:
 
 
     print(x_model.summary())
@@ -196,15 +206,14 @@ def forecast_asset_movement(request):
 
     # # Declare and Initialize TS Model Variable
 
-    # In[70]:
+    # In[119]:
 
 
     date_col='Date'
     prediction_col=prediction_name
     feature_cols=[prediction_name]
 
-    input_sequence_length =60
-    output_sequence_length =10
+
 
     nLastData=input_sequence_length*2
 
@@ -216,7 +225,7 @@ def forecast_asset_movement(request):
 
     # # Query Fin Data from BQ
 
-    # In[71]:
+    # In[120]:
 
 
     lastDate=None
@@ -236,14 +245,14 @@ def forecast_asset_movement(request):
         print( f"Not found price data at {today}  of {asset_name}")
         return f"Not found price data at {today}  of {asset_name}"
     else:
-       lastDate=dfLastDate.iloc[0,0]
-       today=lastDate.strftime('%Y-%m-%d')
+        lastDate=dfLastDate.iloc[0,0]
+        today=lastDate.strftime('%Y-%m-%d')
 
 
     print(f"Forecast {prediction_col} movement of  {asset_name} at {today}")
 
 
-    # In[73]:
+    # In[121]:
 
 
     print(f"Get last price of {asset_name}")
@@ -262,14 +271,14 @@ def forecast_asset_movement(request):
        print(f"{asset_name}-{prediction_col} at {today} has not been predicted price movement yet.") 
 
 
-    # In[74]:
+    # In[122]:
 
 
     dayAgo=datetime.strptime(today,'%Y-%m-%d') +timedelta(days=-nLastData)
     print(f"Get data from {dayAgo.strftime('%Y-%m-%d')} - {today} as input to forecast")
 
 
-    # In[75]:
+    # In[123]:
 
 
     sql=f"""
@@ -295,8 +304,12 @@ def forecast_asset_movement(request):
         return "no enough data"
 
 
-    # In[76]:
+    # In[124]:
 
+
+    # import matplotlib.pyplot as plt
+    # import matplotlib.dates as mdates
+    # import seaborn as sns
 
     # plt.subplots(2, 1, figsize = (20, 10),sharex=True)
 
@@ -314,7 +327,7 @@ def forecast_asset_movement(request):
 
     # # Get only Feature( 1 Indicator) to Predict itself in the next N days
 
-    # In[77]:
+    # In[125]:
 
 
     print(f"Get Feature to Predict : {prediction_col} ")
@@ -333,7 +346,7 @@ def forecast_asset_movement(request):
 
     # # Make Pediction as Forecast
 
-    # In[78]:
+    # In[126]:
 
 
     xUnscaled=dfForPred.values #print(xUnscaled.shape)
@@ -378,7 +391,7 @@ def forecast_asset_movement(request):
 
     # ## Feature Data
 
-    # In[79]:
+    # In[127]:
 
 
     dfFeature=pd.DataFrame(data= xUnscaled,columns=feature_cols,index=dfForPred.index)
@@ -390,7 +403,7 @@ def forecast_asset_movement(request):
 
     # ## Forecast Value Data
 
-    # In[80]:
+    # In[128]:
 
 
     lastRowOfFeature=dfFeature.index.max()
@@ -406,7 +419,7 @@ def forecast_asset_movement(request):
 
     # # Get Prepraed To ingest data into BQ , we have to create dataframe and convert to Json-Rowns
 
-    # In[81]:
+    # In[129]:
 
 
     outputDF=pd.DataFrame(data=[ [today,asset_name,prediction_col,dtStr_imported] ],columns=["prediction_date","asset_name","prediction_name","pred_timestamp"])
@@ -414,7 +427,7 @@ def forecast_asset_movement(request):
     print(outputDF)
 
 
-    # In[82]:
+    # In[130]:
 
 
     jsonOutput = json.loads(outputDF.to_json(orient = 'records'))
@@ -439,7 +452,7 @@ def forecast_asset_movement(request):
 
     # # Ingest Data to BigQuery 
 
-    # In[83]:
+    # In[131]:
 
 
     try:
@@ -467,25 +480,25 @@ def forecast_asset_movement(request):
     #job_config.schema
 
 
-    # In[96]:
+    # In[132]:
 
 
     return   'completed job.'
 
 
-# In[ ]:
+    # In[ ]:
 
 
 
 
 
-# In[ ]:
+    # In[ ]:
 
 
 
 
 
-# In[ ]:
+    # In[ ]:
 
 
 
