@@ -7,6 +7,9 @@ This project is about how to build time-series machine leaning to predict asset 
 
 ## Main-Section
 
+## [Forecast Nasdaq Price Movement By LSTM Time Series Project ](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries) 
+[click link to project](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries) 
+
 ## [Build LSTM Time-Series](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)
 #### Overview
 - Run this file to build model [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)
@@ -31,9 +34,6 @@ This project is about how to build time-series machine leaning to predict asset 
 - For example, take Price,MACD, RSI in the past 20 days to predict each of them in the next 5 days simultaneously.  each of them forecasts future value on its own separately. 
 - Reference content : [How to Use the TimeseriesGenerator for Time Series Forecasting in Keras](https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/)
  
-## [Forecast Nasdaq Price Movement By LSTM Time Series Project ](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries) 
-[click link to project](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries) 
-
 
 ## Option-Section
 
