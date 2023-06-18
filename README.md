@@ -48,8 +48,6 @@ There are a lot of files that we do some research regarding how to build LSTM Ti
 
 #### [additional_dev](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/additional_dev)
 
-
-
 #### Keras Tuner Refernces
 - [Getting Started with KerasTuner](https://keras.io/guides/keras_tuner/getting_started/)
 - [Introduction to the Keras Tuner](https://www.tensorflow.org/tutorials/keras/keras_tuner)
