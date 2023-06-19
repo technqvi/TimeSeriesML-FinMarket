@@ -17,8 +17,7 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 #### [invoke_forecast_gcf](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/invoke_forecast_gcf.ipynb)
 #### [model](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset/model)
 
-## [Practice creating TS-Model by Examples](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset)
-click  link to see detail.
+
 
 ### [data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/data)
 This directory contains several csv file to be used as input data to run these script files such as  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)
