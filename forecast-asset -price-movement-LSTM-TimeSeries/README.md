@@ -2,7 +2,7 @@
 This is experimental project to guid you how to predict stock price movement pattern pattern with End to End Solution .
 Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forecasting Result
 
-## [Forecast-Asset from Trained Model](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset)
+## [Forecast Asset Future Price Movement By LSTM-TimeSeries](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset)
 #### [load_daily_price_from_yahoo.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/load_daily_price_from_yahoo.ipynb)
 * There are 2 options to load price data to GoogleBiquery.
 * Option#1 Export data price from Amibroker as csv file and load it to bigquery.
