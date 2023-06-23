@@ -14,6 +14,13 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * Exploring the data to identify trends and patterns of EMA movement
 * Splitting the data  into train/test dataset to prepare it for modeling
 * Scaling  data to Mix-Max Range 0-1
+* Creating feature  as 3 direction array , it is proper input format to feed into the LSTM network 
+* Tuning model to find optimal hyper paramter to get best model
+* ReTraining with the best tuned model on the training data set
+* Evaluation with test dataset with selected regression metric to see how well model forecast  with metric MAE 
+* Building final model with entire data 
+* Storing model file and its scaler file into local path and GCS
+
 
 #### [forecast_asset_movement.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/forecast_asset_movement.ipynb)
 * [forecast-asset-movement](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset/forecast-asset-movement)(google cloud function)
