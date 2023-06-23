@@ -21,7 +21,7 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * ReTraining with the best tuned model on the training data set
 * Evaluation with test dataset with selected regression metric to see how well model forecast  with metric MAE 
 * Building final model with entire data 
-* Storing model file and its scaler file into local path and GCS
+* Storing model file and its scaler files into local path and GCS
 
 
 #### [forecast_asset_movement.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/forecast_asset_movement.ipynb)
