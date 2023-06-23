@@ -8,7 +8,7 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * Option#1 Export data price from Amibroker as csv file and load it to bigquery.
 * Option#2 Pull data price from [finance.yahoo.com](https://finance.yahoo.com/) by using [yfinance](https://github.com/ranaroussi/yfinance) as dataframe and load it to bigquery 
 * To build any technical analysis indicator as features to get prepred for building Time-Series Machine Learning, we can appy [Technical Analysis Library in Python](https://technical-analysis-library-in-python.readthedocs.io/en/latest/) to get it done 
-* [load-asset-price-yahoo](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/load_daily_price_from_yahoo.ipynb)(google cloud function), we will deploy [load_asset_price_yahoo.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/load_asset_price_yahoo.ipynb) as clound function on google cloud run service.
+* To run this script , [load-asset-price-yahoo](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/load_daily_price_from_yahoo.ipynb)(google cloud function) is package deployed  as clound function on google cloud run service.
 ### [build_forecast_ts_lstm_model.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/build_forecast_ts_lstm_model.ipynb)
 * Loading the training data from Big1uery  and save it as   csv file
 * Exploring the data to identify trends and patterns of EMA movement
