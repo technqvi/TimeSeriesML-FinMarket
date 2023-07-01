@@ -50,20 +50,17 @@ def forecast_asset_movement(request):
         request_json = request.get_json()
         today=request_json['TODAY']
         model_id=request_json['MODEL_ID']
-        input_sequence_length=int(request_json['INPUT_SL'])
-        output_sequence_length=int(request_json['OUTPUT_SL'])
+
     else:
         print("Enviroment Variable Info")
         today=os.environ.get('TODAY', '') 
         #today=os.environ.get('TODAY', '2023-04-28')  
         model_id=os.environ.get('MODEL_ID', 'spy-ema1')  
-        input_sequence_length=int(os.environ.get('INPUT_SL', '60') ) 
-        output_sequence_length=int(os.environ.get('OUTPUT_SL', '10'))   
+  
 
     print("List parameter as belows")
     print(f"today={today}")
     print(f"model_id={model_id}")
-    print(f"input {input_sequence_length} rows to predict output {output_sequence_length}")
 
 
 
