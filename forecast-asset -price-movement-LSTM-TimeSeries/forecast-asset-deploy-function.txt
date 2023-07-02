@@ -18,9 +18,7 @@ curl -m 1210 -X POST https://forecast-fin-asset-ts-movement-qulerxpcqq-as.a.run.
 -d '{
   "TODAY": "" ,
   "MODEL_ID": "spy-ema1-60t10",
-  "INPUT_SL": "60",
-  "OUTPUT_SL": "10"
-}'
+}
 
 
 
