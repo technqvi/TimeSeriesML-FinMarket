@@ -26,7 +26,7 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 
 
 ### [forecast_asset_movement.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/forecast_asset_movement.ipynb)
-##### Youtube :[4 Make Stock Multi Step Prediction Using LSTM Model](https://www.youtube.com/watch?v=8DlACgKslSE)
+##### Youtube :[3 Make Stock Multi Step Prediction Using LSTM Model](https://www.youtube.com/watch?v=8DlACgKslSE)
 * Load model configuration metadata by model-id from csv file referenced as external table on BigQuery
 * Load model file and scaler file for feature and prediction value normalization
 * Check whether price data as specifed data on FinAssetForecast.fin_data table have been made prediction on FinAssetForecast.fin_movement_forecast table 
