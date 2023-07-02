@@ -2,7 +2,7 @@ fin_movement_forecast
 asia-southeast1
 
 prediction_date
-asset_name,prediction_name
+model_id,asset_name,prediction_name
 
 
 [
@@ -73,6 +73,13 @@ asset_name,prediction_name
   },
   {
     "name": "asset_name",
+    "mode": "NULLABLE",
+    "type": "STRING",
+    "description": null,
+    "fields": []
+  },
+  {
+    "name": "model_id",
     "mode": "NULLABLE",
     "type": "STRING",
     "description": null,

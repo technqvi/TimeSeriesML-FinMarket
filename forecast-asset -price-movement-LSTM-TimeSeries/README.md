@@ -30,7 +30,7 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * Load model configuration metadata by model-id from csv file referenced as external table on BigQuery
 * Load model file and scaler file for feature and prediction value normalization
 * Check whether price data as specifed data on FinAssetForecast.fin_data table have been made prediction on FinAssetForecast.fin_movement_forecast table 
-* Get the last N sequence records of specific feature like EMA,MACD,SIGNAL from FinAssetForecast.fin_data table to make prediction future  movement. 
+* Get the last N sequence records of specific feature like EMA,MACD,SIGNAL as input feature from FinAssetForecast.fin_data table to make prediction future  movement as prediction output. 
 * Make predction with proper input (3 dimesion numpy array  [sample rows, time steps, features])
 * Create 3 dataframes such as Main Dataframe ,Feature Dataframe,Preidction Dataframe.
 * Convert 3 dataframes created from earlier step to Json file, Feature Dataframe and Preidction Dataframe are collection in  Main Dataframe
@@ -43,6 +43,12 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 
 
 ### [visualize_forecast_ts](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/visualize_forecast_ts.ipynb)
+* Specify start-date and end-date to plot prediction result
+* Get model configuration from FinAssetForecast.model_ts_metadata table by the model id
+* Pass the model id to get feature and  prediction value from FinAssetForecast.fin_movement_forecast and actual value from  FinAssetForecast.fin_movement_forecast
+*
+
+ 
 
 ###  [Prediction Result Analystics on PowerBI]
 

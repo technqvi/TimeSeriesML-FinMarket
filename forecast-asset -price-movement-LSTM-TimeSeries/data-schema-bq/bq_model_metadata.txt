@@ -22,7 +22,28 @@ model_ts_metadata
     "fields": []
   },
   {
+    "name": "input_sequence_length",
+    "mode": "NULLABLE",
+    "type": "INTEGER",
+    "description": null,
+    "fields": []
+  },
+  {
+    "name": "output_sequence_length",
+    "mode": "NULLABLE",
+    "type": "INTEGER",
+    "description": null,
+    "fields": []
+  },
+  {
     "name": "gs_model_path",
+    "mode": "NULLABLE",
+    "type": "STRING",
+    "description": null,
+    "fields": []
+  },
+  {
+    "name": "local_model_path",
     "mode": "NULLABLE",
     "type": "STRING",
     "description": null,

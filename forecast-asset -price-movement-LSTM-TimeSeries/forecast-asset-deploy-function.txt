@@ -38,8 +38,7 @@ Body
 {
   "TODAY": "" ,
   "MODEL_ID": "spy-ema1-60t10",
-  "INPUT_SL": "60",
-  "OUTPUT_SL": "10"
+
 }
 
 
