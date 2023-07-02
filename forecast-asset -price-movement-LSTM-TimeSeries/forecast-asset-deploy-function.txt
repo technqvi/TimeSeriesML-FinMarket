@@ -3,6 +3,11 @@ indent mehton
 uncomment return
 remove visualize
 
+gcloud functions deploy load-asset-price-yahoo  --gen2  --region=asia-southeast1  --runtime=python39  --memory=1024 --source=.    --env-vars-file .env.yaml  --trigger-http   --entry-point  load_asset_price_yahoo --timeout 1200s
+
+functions-framework --target=load_asset_price_yahoo
+
+
 gcloud functions deploy forecast-fin-asset-ts-movement  --gen2  --region=asia-southeast1  --runtime=python39  --memory=1024 --source=.  --env-vars-file .env.yaml  --trigger-http   --entry-point  forecast_asset_movement --timeout 1200s
 
 functions-framework --target=forecast_asset_movement
@@ -18,9 +23,7 @@ curl -m 1210 -X POST https://forecast-fin-asset-ts-movement-qulerxpcqq-as.a.run.
 }'
 
 
-gcloud functions deploy load-asset-price-yahoo  --gen2  --region=asia-southeast1  --runtime=python39  --memory=1024 --source=.    --env-vars-file .env.yaml  --trigger-http   --entry-point  load_asset_price_yahoo --timeout 1200s
 
-functions-framework --target=load_asset_price_yahoo
 
 
 colud scheulder

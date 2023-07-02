@@ -40,8 +40,8 @@ def forecast_asset_movement(request):
 
     loadModelMode='gcs'   # local,gcs
 
-    model_id='qqq-ema1-30t5'
-    today='2023-06-02'
+    model_id='spy-ema1-60t10-ds0115t0523'
+    today=''
     input_sequence_length =30
     output_sequence_length =5
 
@@ -55,7 +55,7 @@ def forecast_asset_movement(request):
         print("Enviroment Variable Info")
         today=os.environ.get('TODAY', '') 
         #today=os.environ.get('TODAY', '2023-04-28')  
-        model_id=os.environ.get('MODEL_ID', 'spy-ema1')  
+        model_id=os.environ.get('MODEL_ID', 'spy-ema1-60t10-ds0115t0523')  
   
 
     print("List parameter as belows")
@@ -390,7 +390,7 @@ def forecast_asset_movement(request):
 
     # In[127]:
 
-
+    print("Create indexes from Dataframe dfForPred")
     dfFeature=pd.DataFrame(data= xUnscaled,columns=feature_cols,index=dfForPred.index)
 
     print(dfFeature.shape)
@@ -402,7 +402,7 @@ def forecast_asset_movement(request):
 
     # In[128]:
 
-
+    print("Create indexes by specifying output_sequence_length stating from get last record of DFFeature+1")
     lastRowOfFeature=dfFeature.index.max()
     firstRowofPrediction=lastRowOfFeature+timedelta(days=1)
     datePred=pd.date_range(start=firstRowofPrediction,freq='b',periods=output_sequence_length)
@@ -419,7 +419,7 @@ def forecast_asset_movement(request):
     # In[129]:
 
 
-    outputDF=pd.DataFrame(data=[ [today,asset_name,prediction_col,dtStr_imported] ],columns=["prediction_date","asset_name","prediction_name","pred_timestamp"])
+    outputDF=pd.DataFrame(data=[ [today,asset_name,prediction_col,dtStr_imported,model_id] ],columns=["prediction_date","asset_name","prediction_name","pred_timestamp","model_id"])
     print(outputDF.info())
     print(outputDF)
 
