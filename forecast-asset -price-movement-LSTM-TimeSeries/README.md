@@ -2,8 +2,8 @@
 This is experimental project to guid you how to predict stock price movement pattern pattern with End to End Solution .
 Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forecasting Result
 
-## [Forecast Asset Future Price Movement By LSTM-TimeSeries](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset)
-### [load_daily_price_from_yahoo.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/load_daily_price_from_yahoo.ipynb)
+## [Forecast Asset Future Price Movement By LSTM-TimeSeries](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries)
+### [load_daily_price_from_yahoo.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/load_daily_price_from_yahoo.ipynb)
 ##### Youtube : [1 Load Stock Price From Yahoo To BigQuery For Building LSTM Model](https://www.youtube.com/watch?v=jaPpyopNFPA&feature=youtu.be)
 * There are 2 options to load price data to GoogleBiquery.
 * Option#1 Export data price from Amibroker as csv file and load it to bigquery.
@@ -49,9 +49,10 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * Plot prection result(feature+prediction) compare to actual price with line chart 
 * Find mean absolute error(MAE) to measure gap between actual value and predicted value. 
 
-###  [Prediction Result Analystics on PowerBI]
+###  [Prediction Result Analystics on PowerBI](https://app.powerbi.com/groups/me/reports/fa816185-f898-4b89-9d06-8864d39ec0eb/ReportSection?experience=power-bi)
+* Show EMA features value series (blue dot) followed by EMA Prediction value (green dot)
 * Retrive prediction result from view table in Bigquery
-* Transform data a little bit
+* Transform  data in order to filter only EMA1 Feature
 * Create Visualization prection result(feature+prediction) compare to actual price with line chart on PowerBI
 
 ### Folder to store Artifact and other files
