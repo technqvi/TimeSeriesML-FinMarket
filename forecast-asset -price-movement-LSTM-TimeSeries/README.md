@@ -38,7 +38,7 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 
 ### [invoke_forecast_gcf](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/invoke_forecast_gcf.ipynb)
 * To make prediction multiple items , run this script to call cloud function api by specifying desired period.
-  To obtain token as credential to call api correctly, you need to  install Google cloud-sdk and set defualt project first. [link](https://cloud.google.com/sdk/docs/install)
+* To obtain authentication token as credential to call api correctly, you need to  install Google cloud-sdk and set defualt project first on enviroemnt variable(Window OS). [link](https://cloud.google.com/sdk/docs/install)
 
 
 ### [visualize_forecast_ts](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/visualize_forecast_ts.ipynb)
