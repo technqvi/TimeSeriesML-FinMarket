@@ -263,9 +263,11 @@ def forecast_asset_movement(request):
        dfLastPred=dfLastPred.drop_duplicates(subset=['prediction_date','asset_name','prediction_name'],keep='last') 
        print(f"{asset_name}-{prediction_col}-{today} has been predicted price movement")
        print(dfLastPred)
-       return "there is one record of prediction price movement"
+       return f"Prediction price movement of {asset_name}-{prediction_col} at {today} has been predicted"
     else:
        print(f"{asset_name}-{prediction_col} at {today} has not been predicted price movement yet.") 
+       print("The system is about to predict price movement shortly.") 
+       print("=======================================================================================") 
 
 
     # In[122]:
@@ -297,8 +299,8 @@ def forecast_asset_movement(request):
     print(df[['Symbol','Close' ,'ImportDateTime']].tail())
 
     if df.empty==True or len(df)<input_sequence_length:
-        print(f"There is enough data to make prediction during {dayAgo.strftime('%Y-%m-%d')} - {today}")
-        return "no enough data"
+        print(f"There is no enough data to make prediction during {dayAgo.strftime('%Y-%m-%d')} - {today}")
+        return f"There is no enough data to make prediction during {dayAgo.strftime('%Y-%m-%d')} - {today}"
 
 
     # In[124]:
@@ -401,11 +403,14 @@ def forecast_asset_movement(request):
     # ## Forecast Value Data
 
     # In[128]:
+    from pandas.tseries.holiday import USFederalHolidayCalendar
+    from pandas.tseries.offsets import CustomBusinessDay
+    us_bd = CustomBusinessDay(calendar=USFederalHolidayCalendar())
 
     print("Create indexes by specifying output_sequence_length stating from get last record of DFFeature+1")
     lastRowOfFeature=dfFeature.index.max()
     firstRowofPrediction=lastRowOfFeature+timedelta(days=1)
-    datePred=pd.date_range(start=firstRowofPrediction,freq='b',periods=output_sequence_length)
+    datePred=pd.date_range(start=firstRowofPrediction,freq=us_bd,periods=output_sequence_length)
     print(datePred)
 
     dfPrediction=pd.DataFrame(data= yPred,columns=feature_cols,index=datePred)
@@ -472,7 +477,7 @@ def forecast_asset_movement(request):
         print(job.error_result)
         print(job.errors)
     else:
-        print(f"import to bigquery successfully  {len(jsonOutput)} records")
+        print(f"Import to bigquery successfully  {len(jsonOutput)} records")
 
     #job_config.schema
 
@@ -480,7 +485,7 @@ def forecast_asset_movement(request):
     # In[132]:
 
 
-    return   'completed job.'
+    return   f"The system has done predicting price movement of {asset_name}-{prediction_col}-{today}."
 
 
     # In[ ]:
