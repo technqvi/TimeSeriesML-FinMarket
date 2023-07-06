@@ -45,7 +45,7 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * Specify start-date and end-date to plot prediction result
 * Get model configuration from FinAssetForecast.model_ts_metadata table by the model id.
 * Get feature and  prediction value from FinAssetForecast.fin_movement_forecast and actual value from  FinAssetForecast.fin_movement_forecast.
-* Plot prediction result consisted of feature value and prediction value consecutively  compared to actual price using line chart.
+* Plot prediction result consisted of feature value and prediction value consecutively by  comparison between prediction to actual price using line chart.
 * Find mean absolute error(MAE) to measure gap between actual value and predicted value. 
 
 ###  [Prediction Result Analystics on PowerBI](https://app.powerbi.com/groups/me/reports/fa816185-f898-4b89-9d06-8864d39ec0eb/ReportSection?experience=power-bi)
