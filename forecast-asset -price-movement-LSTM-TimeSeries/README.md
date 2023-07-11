@@ -37,11 +37,13 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * This script has been deployed as clound function on google cloud run service AS [forecast-asset-movement].(https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/forecast-asset-movement) and create job on cloud scheduler to trig clound function on daily basis.
 
 ### [invoke_forecast_gcf](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/invoke_forecast_gcf.ipynb)
+### Youtube : [3 Make Stock Multi Step Prediction Using LSTM Model#2](https://youtu.be/8DlACgKslSE?t=4265)
 * To make prediction multiple items , run this script to call cloud function api by specifying desired period.
 * To obtain authentication token as credential to call api correctly, you need to  install Google cloud-sdk and set defualt project first on enviroemnt variable(Window OS). [link](https://cloud.google.com/sdk/docs/install).
 
 
 ### [visualize_forecast_ts](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/visualize_forecast_ts.ipynb)
+### YouTube: [4 Visualize Stock Price Prediction Result on JupyterLab](https://www.youtube.com/watch?v=jiOr3AIMWO4&)
 * Specify start-date and end-date to plot prediction result
 * Get model configuration from FinAssetForecast.model_ts_metadata table by the model id.
 * Get feature and  prediction value from FinAssetForecast.fin_movement_forecast and actual value from  FinAssetForecast.fin_movement_forecast.
@@ -49,6 +51,7 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * Find mean absolute error(MAE) to measure gap between actual value and predicted value. 
 
 ###  [Prediction Result Analystics on PowerBI](https://app.powerbi.com/groups/me/reports/fa816185-f898-4b89-9d06-8864d39ec0eb/ReportSection?experience=power-bi)
+### YouTube: [4 Visualize Stock Price Prediction Result on PowerBI](https://youtu.be/jiOr3AIMWO4?t=2093)
 * Show EMA features value series (blue dot) followed by EMA Prediction value (green dot).
 * Retrive prediction result from view table in Bigquery.
 * Transform  data in order to filter only EMA1 Feature.
