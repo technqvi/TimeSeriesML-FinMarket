@@ -27,7 +27,7 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * Storing model file and its scaler files into local path and GCS.
 
 
-### [forecast_asset_movement.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/forecast_asset_movement.ipynb)
+### [forecast_asset_movement.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/forecast_asset_movement.ipynb)
 ##### Youtube :[3 Make Stock Multi Step Prediction Using LSTM Model](https://www.youtube.com/watch?v=8DlACgKslSE)
 * Load model configuration metadata by model-id from csv file referenced as external table on BigQuery.
 * Load model file and scaler file for feature and prediction value normalization.
@@ -38,13 +38,13 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * Ingest JSON file into FinAssetForecast.fin_movement_forecast table.
 * This script has been deployed as clound function on google cloud run service AS [forecast-asset-movement].(https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/forecast-asset-movement) and create job on cloud scheduler to trig clound function on daily basis.
 
-### [invoke_forecast_gcf](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/invoke_forecast_gcf.ipynb)
+### [invoke_forecast_gcf](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/invoke_forecast_gcf.ipynb)
 ### Youtube : [3 Make Stock Multi Step Prediction Using LSTM Model#2](https://youtu.be/8DlACgKslSE?t=4265)
 * To make prediction multiple items , run this script to call cloud function api by specifying desired period.
 * To obtain authentication token as credential to call api correctly, you need to  install Google cloud-sdk and set defualt project first on enviroemnt variable(Window OS). [link](https://cloud.google.com/sdk/docs/install).
 
 
-### [visualize_forecast_ts](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset/visualize_forecast_ts.ipynb)
+### [visualize_forecast_ts](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/visualize_forecast_result.ipynb)
 ### YouTube: [4 Visualize Stock Price Prediction Result on JupyterLab](https://www.youtube.com/watch?v=jiOr3AIMWO4&)
 * Specify start-date and end-date to plot prediction result
 * Get model configuration from FinAssetForecast.model_ts_metadata table by the model id.
@@ -60,7 +60,7 @@ Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forec
 * Create Visualization prection result(feature+prediction) compare to actual price with line chart on PowerBI.
 
 ### Folder to store Artifact and other files
-* [model](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset/model) :  Each sub folder stores model file and scaler object file, each is located on both local path and google cloud  storage.
+* [model](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/model) :  Each sub folder stores model file and scaler object file, each is located on both local path and google cloud  storage.
 * [model_ts_metadata.csv](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/model/model_ts_metadata.csv) : store model configuration metadata on google cloud storage but it allow you to query against external table on BigQuery.
 * [train_data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/train_data) : store train/test csv file loaded from Bigquery.
 * [train_model_collection](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/train_model_collection) : All satisfactory models can be collected here.
