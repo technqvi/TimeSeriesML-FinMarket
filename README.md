@@ -6,12 +6,12 @@ This project is about how to build time-series machine leaning to predict asset 
 - scikit-learn >= 1.2.2
 - pandas >=1.5.3 and numpy >= 1.24.2
 
-# Main Project
+## Main Project
 
 <img width="839" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/8306119d-1399-4aa5-8d3d-0c968161f5a3">
 
-## [Youtube : Build Time-Series LSTM Models  to Predict Future Stock Price](https://www.youtube.com/playlist?list=PLIxgtZc_tZWPCX4dAFJFhDPPGxEungxc8)
-## [Forecast Nasdaq Price Movement By LSTM Time Series Project ](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries) 
+### [Youtube : Build Time-Series LSTM Models  to Predict Future Stock Price](https://www.youtube.com/playlist?list=PLIxgtZc_tZWPCX4dAFJFhDPPGxEungxc8)
+### [Forecast Nasdaq Price Movement By LSTM Time Series Project ](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries) 
 [click link to project](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries)
 
 ## Main-Section 
