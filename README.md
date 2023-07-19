@@ -1,11 +1,6 @@
 # About
 This project is about how to build time-series machine leaning to predict asset price(ETF-Fund,Stock, Crypto) and its technical indicators(Moving-Average,MACD,RSI). There are 2 parts such as Main-Section and Additional-Section , we focus on the former.
 
-### Main Packages  on Python 3.9
-- tensorflow >=2.11
-- scikit-learn >= 1.2.2
-- pandas >=1.5.3 and numpy >= 1.24.2
-
 ## Main Project
 
 <img width="839" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/8306119d-1399-4aa5-8d3d-0c968161f5a3">
@@ -60,3 +55,8 @@ There are a lot of files that we do some research regarding how to build LSTM Ti
 - [Getting Started with KerasTuner](https://keras.io/guides/keras_tuner/getting_started/)
 - [Introduction to the Keras Tuner](https://www.tensorflow.org/tutorials/keras/keras_tuner)
 - [BayesianOptimization Tuner](https://keras.io/api/keras_tuner/tuners/bayesian/)
+
+### Main Packages  on Python 3.9
+- tensorflow >=2.11
+- scikit-learn >= 1.2.2
+- pandas >=1.5.3 and numpy >= 1.24.2
