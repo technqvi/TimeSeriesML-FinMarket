@@ -1,19 +1,22 @@
 # About
 This project is about how to build time-series machine leaning to predict asset price(ETF-Fund,Stock, Crypto) and its technical indicators(Moving-Average,MACD,RSI). There are 2 parts such as Main-Section and Additional-Section , we focus on the former.
 
-<img width="839" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/8306119d-1399-4aa5-8d3d-0c968161f5a3">
-
 ### Main Packages  on Python 3.9
 - tensorflow >=2.11
 - scikit-learn >= 1.2.2
 - pandas >=1.5.3 and numpy >= 1.24.2
 
-## Main-Section
+# Main Project
 
+<img width="839" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/8306119d-1399-4aa5-8d3d-0c968161f5a3">
+
+## [Youtube : Build Time-Series LSTM Models  to Predict Future Stock Price](https://www.youtube.com/playlist?list=PLIxgtZc_tZWPCX4dAFJFhDPPGxEungxc8)
 ## [Forecast Nasdaq Price Movement By LSTM Time Series Project ](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries) 
-[click link to project](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries) 
+[click link to project](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries)
 
-## [Build LSTM Time-Series](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)
+## Main-Section 
+
+### [Build LSTM Time-Series](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)
 #### Overview
 - Run this file to build model [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb)
 - This is one of the core files on this repo,  we apply the LSTM model to build time-series forecasting to take prices over the past 60 days to predict prices in the next 10 days.
@@ -25,7 +28,7 @@ This project is about how to build time-series machine leaning to predict asset 
 - SourceCode: [006 Time Series Forecasting - Multi-Output Regression.ipynb](https://github.com/flo7up/relataly-public-python-tutorials/blob/master/01%20Time%20Series%20Forecasting%20%26%20Regression/006%20Multi-Output%20Regression.ipynb)
 
 
-## [Tune LSTM Time-Series using Keras-Tuner](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-tune-dev)
+### [Tune LSTM Time-Series using Keras-Tuner](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-tune-dev)
 #### [Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb)
 - [Tuned-MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tuned-MultiVarToManyOutputLSTM.ipynb) :  To find optimal hypperparamter to get the best model, we apply KerasTuner to perform this thing. we tuned 2 stuff ,   Input-Unit on hidden layer and Dropout-Rate . we added tuning code part(Training the TUNED Model) into this file. The remaining  is  the same as  [MultiVarToManyOutputLSTM.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/MultiVarToManyOutputLSTM.ipynb) 
 - [Tune_jsbl-GenTS-multiI-InToOut.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/lstm-tune-dev/Tune_jsbl-GenTS-multiI-InToOut.ipynb): Build time series model to forecast multiple technical indicators like EMA,MACD,Signal,RSI at the same time, each of them will take its own data in the past to predict future data simultaneously and separately.
@@ -37,7 +40,7 @@ This project is about how to build time-series machine leaning to predict asset 
 - For example, take Price,MACD, RSI in the past 20 days to predict each of them in the next 5 days simultaneously.  each of them forecasts future value on its own separately. 
 - Reference content : [How to Use the TimeseriesGenerator for Time Series Forecasting in Keras](https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/)
  
-## [Practice building TS-Model by Examples](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset)
+### [Practice building TS-Model by Examples](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/lstm-fin-asset)
 click  link to see detail.
 
 ## Option-Section
