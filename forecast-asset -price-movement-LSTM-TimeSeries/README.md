@@ -1,7 +1,7 @@
 # About
 - This project involves in building time series model using LSTM on Tenforflow framework  make prediction of future stock price movement pattern pattern with End to End Solution as the following steps.
 - We will use EMA price data points over the past 30 days to forecast EMA price over the next 5 days.
-- Step perfromed include the following.
+- Steps performed include the following.
   * Load stock price data from Finance.yahoo.com to Bigquery.
   * Create technical analysis indicator such as EMA,MACD,SINGLA by TA library as features.
   * Build & Tune model using Keras Tunner to find optimal hyperparameters to get best model.
