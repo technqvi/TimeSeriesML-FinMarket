@@ -1,6 +1,12 @@
 # About
-This is experimental project to guid you how to predict stock price movement pattern pattern with End to End Solution .
-Load Data => Build Model ==> Forecast Model ==> Deploy Model ==> Visualize Forecasting Result.
+- This project involves in building time series model using LSTM on Tenforflow framework  make prediction of future stock price movement pattern pattern with End to End Solution as the following steps.
+- We will use EMA price data points over the past 30 days to forecast EMA price over the next 5 days.
+- Step perfromed include the following.
+  * Load stock price data from Finance.yahoo.com to Bigquery.
+  * Create technical analysis indicator such as EMA,MACD,SINGLA by TA library as features.
+  * Build & Tune model using Keras Tunner to find optimal hyperparameters to get best model.
+  * Load tuned model to  make prediction and store prediction result into BigQuery.
+  * Visulize prediction result compared to the actual result through Juoyter Lab and PowerBI.
 
 <img width="697" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/9694e19a-9e98-4d3a-a6fb-26e773cb8f5b">
 

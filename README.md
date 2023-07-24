@@ -1,5 +1,5 @@
 # About
-This project is about how to build time-series machine leaning to predict asset price(ETF-Fund,Stock, Crypto) and its technical indicators(Moving-Average,MACD,RSI). There are 2 parts such as Main-Section and Additional-Section , we focus on the former.
+This project is about how to build time-series model to predict asset price(ETF-Fund,Stock, Crypto) and its technical indicators(Moving-Average,MACD,RSI). There are 3 parts such as Main Project  ,Main-Section and Additional-Section , we focus on the former.
 
 ## Main Project
 
