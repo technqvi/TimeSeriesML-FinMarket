@@ -1,5 +1,5 @@
 # About
-- This project involves in building time series model using LSTM on Tenforflow framework  make prediction of future stock price movement pattern pattern with End to End Solution as the following steps.
+- This project involves in building time series model using Long short-term memory (LSTM) network  on Tensorflow Framework  make prediction of future stock price movement pattern pattern with End to End Solution as the following steps.
 - We will use EMA price data points over the past 30 days to forecast EMA price over the next 5 days.
 - Steps performed include the following.
   * Load stock price data from Finance.yahoo.com to Bigquery.
@@ -21,16 +21,16 @@
 
 ### [build_forecast_ts_lstm_model.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/build_forecast_ts_lstm_model.ipynb)
 ##### Youtube :  [2#1 Build Univariate Multi Step LSTM Models To Predict Stock Price](https://www.youtube.com/watch?v=O8p2cteVTSs&feature=youtu.be) | [2#2 Build Univariate Multi Step LSTM Models To Predict Stock Price](https://youtu.be/_bVOFtHC2yQ) |  [2#3 Build Univariate Multi Step LSTM Models To Predict Stock Price](https://www.youtube.com/watch?v=8idQEuBFLfw&feature=youtu.be)
-* Loading the training data from Big1uery  and save it as   csv file.
-* Exploring the data to identify trends and patterns of EMA movement.
-* Splitting the data  into train/test dataset to prepare it for modeling.
-* Scaling  data to Mix-Max Range 0-1.
-* Creating feature  as 3 direction array , it is proper input format to feed into the LSTM network .
-* Tuning model to find optimal hyper paramter to get best model.
-* ReTraining with the best tuned model on the training data set.
-* Evaluation with test dataset with selected regression metric to see how well model forecast  with metric MAE .
-* Building final model with entire data .
-* Storing model file and its scaler files into local path and GCS.
+* Load the training data from Big1uery  and save it as   csv file.
+* Explore the data to identify trends and patterns of EMA movement.
+* Split the data  into 2 parts such as  train and test dataset to prepare it for modeling.
+* Normalize data by Scaling  data into given range 0-1(Min-Max).
+* Tranform input feature from 2D array  to 3D  array  to feed it into the LSTM network .
+* Build  model by Keras Tuner for tuning to find optimal hyper paramter to get best model.
+* ReTrain with the best tuned model on the training data set.
+* Evaluate with test dataset with selected regression metric to see how well model forecast  with metric MAE .
+* Build final model with entire data .
+* Store  model file and its scaler files into local path and GCS.
 
 
 ### [forecast_asset_movement.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/forecast_asset_movement.ipynb)

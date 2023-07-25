@@ -1,5 +1,5 @@
 # About
-This project is about how to build time-series model to predict asset price(ETF-Fund,Stock, Crypto) and its technical indicators(Moving-Average,MACD,RSI). There are 3 parts such as Main Project  ,Main-Section and Additional-Section.
+This project is about how to build time-series model using Long short-term memory (LSTM) network to predict asset price(ETF-Fund,Stock, Crypto) and its technical indicators(Moving-Average,MACD,RSI). Mainly there are 3 parts such as Main Project  ,Main-Section and Additional-Section.
 
 ## Main Project
 
