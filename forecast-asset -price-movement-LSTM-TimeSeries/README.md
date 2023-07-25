@@ -6,7 +6,7 @@
   * Create technical analysis indicator such as EMA,MACD,SINGLA by TA library as features.
   * Build & Tune model using Keras Tunner to find optimal hyperparameters to get best model.
   * Load tuned model to  make prediction and store prediction result into BigQuery.
-  * Visualize prediction result as line chart compared to the actual result through Juoyter Lab and PowerBI.
+  * Visualize prediction result using line chart compared to the actual result through Jupyter Lab and PowerBI.
 
 <img width="697" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/9694e19a-9e98-4d3a-a6fb-26e773cb8f5b">
 
