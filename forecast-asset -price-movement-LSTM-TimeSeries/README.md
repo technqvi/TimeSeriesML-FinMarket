@@ -11,7 +11,7 @@
 4. Load tuned model to  make prediction and store prediction result into the prediciton result table on BigQuery.
 5. Visualize prediction result using line chart compared to the actual result through Jupyter Lab and PowerBI.
 
-![process](https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/93310eae-1eff-4a19-9fd1-55e66b3e3c13)
+![process-mini](https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/e5795c6e-0008-4f34-a706-fc4f5461f5e1)
 
 <img width="697" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/9694e19a-9e98-4d3a-a6fb-26e773cb8f5b">
 
