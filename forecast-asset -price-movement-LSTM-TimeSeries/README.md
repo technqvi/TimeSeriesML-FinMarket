@@ -1,12 +1,13 @@
 # About
 - This project involves in building time series model using Long short-term memory (LSTM) network  on Tensorflow Framework  make prediction of future stock price movement pattern pattern with End to End Solution as the following steps.
 - We will use EMA price data points over the past 30 days to forecast EMA price over the next 5 days.
-- Steps performed include the following and figure below.
-  1 Load stock price data from Finance.yahoo.com to Bigquery.
-  2 Create technical analysis indicator such as EMA,MACD,SINGLA by TA library as features and import into the price data table.
-  3 Build & Tune LSTM(RNN) model using Keras Tunner to find optimal hyperparameters to get best model.
-  4 Load tuned model to  make prediction and store prediction result into the prediciton result table on BigQuery.
-  5 Visualize prediction result using line chart compared to the actual result through Jupyter Lab and PowerBI.
+
+## Steps performed include the following and figure below.
+1. Load stock price data from Finance.yahoo.com to Bigquery.
+2. Create technical analysis indicator such as EMA,MACD,SINGLA by TA library as features and import into the price data table.
+3. Build & Tune LSTM(RNN) model using Keras Tunner to find optimal hyperparameters to get best model.
+4. Load tuned model to  make prediction and store prediction result into the prediciton result table on BigQuery.
+5. Visualize prediction result using line chart compared to the actual result through Jupyter Lab and PowerBI.
 
 ![process](https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/93310eae-1eff-4a19-9fd1-55e66b3e3c13)
 
