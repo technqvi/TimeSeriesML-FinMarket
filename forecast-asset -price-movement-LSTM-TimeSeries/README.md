@@ -6,7 +6,7 @@
 1. Load stock price data from Finance.yahoo.com to Bigquery.
 2. Create technical analysis indicator such as EMA,MACD,SINGLA using [TA library](https://technical-analysis-library-in-python.readthedocs.io/en/latest/) as features and import into the price data table.
 3. Build Time Series LSTM Model.
-   - Tune LSTM(RNN) model using Keras Tunner to find optimal hyperparameters to get best model.
+   - Tune LSTM(RNN) model using Keras Tuner to find optimal hyperparameters to get best model.
    - Save tuned model and scaler(1.feature scaler 2.prediction scaler) into google cloud storage.
 4. Load tuned model to  make prediction and store prediction result into the prediciton result table on BigQuery.
 5. Visualize prediction result using line chart compared to the actual result through Jupyter Lab and PowerBI.
@@ -87,3 +87,4 @@
 - pandas >=1.5.3 and numpy >= 1.24.2
 - google-bigquery=3.7
 - ta =0.10.2
+- yfinance
