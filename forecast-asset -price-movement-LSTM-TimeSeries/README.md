@@ -1,5 +1,5 @@
 # About
-- This project involves in building time series model using Long short-term memory (LSTM) that is  kind of RNN(Recurrent Neural Network)  on Tensorflow Framework in order to make prediction of future stock price movement pattern .The moel will use EMA price data points over the past 30 days to forecast EMA price over the next 5 days.
+- This project involves in building time series model using Long short-term memory (LSTM) that is  kind of RNN(Recurrent Neural Network)  on Tensorflow Framework in order to make prediction of future stock price movement pattern . The model use EMA price data points as feature input over the past 30 days to forecast EMA price as prediction output over the next 5 days.
 - We provide you with the End to End Solution from ingesting data into BigQuery to visualizing prediction result on Dashboard tool.
 
 ## Steps performed include the following task and process flow figure shown in below.
