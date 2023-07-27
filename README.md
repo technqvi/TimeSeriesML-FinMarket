@@ -60,3 +60,4 @@ There are a lot of files that we do some research regarding how to build LSTM Ti
 - tensorflow >=2.11
 - scikit-learn >= 1.2.2
 - pandas >=1.5.3 and numpy >= 1.24.2
+- ta =0.10.2

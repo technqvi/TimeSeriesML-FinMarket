@@ -1,11 +1,11 @@
 # About
-- This project involves in building time series model using Long short-term memory (LSTM) network  on Tensorflow Framework  make prediction of future stock price movement pattern pattern with End to End Solution as the following steps.
-- We will use EMA price data points over the past 30 days to forecast EMA price over the next 5 days.
+- This project involves in building time series model using Long short-term memory (LSTM) that is  kind of RNN(Recurrent Neural Network)  on Tensorflow Framework in order to make prediction of future stock price movement pattern .The moel will use EMA price data points over the past 30 days to forecast EMA price over the next 5 days.
+- We provide you with the End to End Solution from ingesting data into BigQuery to visualizing prediction result on Dashboard tool.
 
-## Steps performed include the following and figure below.
+## Steps performed include the following task and process flow figure shown in below.
 1. Load stock price data from Finance.yahoo.com to Bigquery.
-2. Create technical analysis indicator such as EMA,MACD,SINGLA by TA library as features and import into the price data table.
-3. Build Time Series LSTM Model
+2. Create technical analysis indicator such as EMA,MACD,SINGLA using [TA library](https://technical-analysis-library-in-python.readthedocs.io/en/latest/) as features and import into the price data table.
+3. Build Time Series LSTM Model.
    - Tune LSTM(RNN) model using Keras Tunner to find optimal hyperparameters to get best model.
    - Save tuned model and scaler(1.feature scaler 2.prediction scaler) into google cloud storage.
 4. Load tuned model to  make prediction and store prediction result into the prediciton result table on BigQuery.
@@ -79,3 +79,11 @@
 * [csv_data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/csv_data) :To load data price exported from Amibrker to BQ, we will store this file here  .
 * [data-schema-bq](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/data-schema-bq) : all table schema on Bigquery.
 * [command to deploy script to cloud function](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/forecast-asset-deploy-function.txt)  
+
+### [All Essential Packages  on Python 3.9](https://pypi.org/project)
+- tensorflow >=2.11
+- keras tuner >= 1.3
+- scikit-learn >= 1.2.2
+- pandas >=1.5.3 and numpy >= 1.24.2
+- google-bigquery=3.7
+- ta =0.10.2
