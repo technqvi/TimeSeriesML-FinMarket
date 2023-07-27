@@ -3,8 +3,6 @@ This project is about how to build time-series model using Long short-term memor
 
 ## Main Project : [forecast-asset -price-movement-LSTM-TimeSeries](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries)
 
-#### [Youtube : Build Time-Series LSTM Models  to Predict Future Stock Price](https://www.youtube.com/playlist?list=PLIxgtZc_tZWPCX4dAFJFhDPPGxEungxc8)
-
 <img width="839" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/8306119d-1399-4aa5-8d3d-0c968161f5a3">
 
 
