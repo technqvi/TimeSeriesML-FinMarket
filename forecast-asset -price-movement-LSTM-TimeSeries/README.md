@@ -50,7 +50,7 @@
 * Make predction with proper input (3 dimesion numpy array  [sample rows, time steps, features])
 * Create 3 dataframes and covert Json file, there are 2 dataframe containing feature and predictoin valu.e  Feature Dataframe are contained as collection in  Main Dataframe .
 * Ingest JSON file into FinAssetForecast.fin_movement_forecast table.
-* This script has been deployed as clound function on google cloud run service AS [forecast-asset-movement].(https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/forecast-asset-movement) and create job on cloud scheduler to trig clound function on daily basis.
+* This script has been deployed as clound function on google cloud as this link [forecast-asset-movement](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/forecast-asset-movement) and create job on cloud scheduler to trig clound function on daily basis.
 
 ### [invoke_forecast_gcf](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/invoke_forecast_gcf.ipynb)
 #### Youtube : [3 Make Stock Multi Step Prediction Using LSTM Model#2](https://youtu.be/8DlACgKslSE?t=4265)
