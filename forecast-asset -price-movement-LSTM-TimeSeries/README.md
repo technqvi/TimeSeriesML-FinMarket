@@ -4,9 +4,9 @@
 
 ## Steps performed include the following task and process flow figure shown in below.
 1. Load stock price data from Finance.yahoo.com to Bigquery.
-2. Create technical analysis indicator such as EMA,MACD,SINGLA using [TA library](https://technical-analysis-library-in-python.readthedocs.io/en/latest/) as features and import into the price data table.
+2. Create technical analysis indicator such as EMA,MACD,SINGLA using [TA library](https://technical-analysis-library-in-python.readthedocs.io/en/latest/) as features and import data into the price data table.
 3. Build Time Series LSTM Model.
-   - Tune LSTM(RNN) model using Keras Tuner to find optimal hyperparameters to get best model.
+   - Tune LSTM(RNN) model using Keras Tuner to find optimal hyperparameters to get the best model.
    - Save tuned model and scaler(1.feature scaler 2.prediction scaler) into google cloud storage.
 4. Load tuned model to  make prediction and store prediction result into the prediciton result table on BigQuery.
 5. Visualize prediction result using line chart compared to the actual result through Jupyter Lab and PowerBI.
@@ -70,7 +70,7 @@
 * Transform  data in order to filter only EMA1 Feature.
 * Create Visualization prection result(feature+prediction) compare to actual price with line chart on PowerBI.
 
-#### Folder to store Artifact and other files
+### Folder to store Artifact and other files
 * [model](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/model) :  Each sub folder stores model file and scaler object file, each is located on both local path and google cloud  storage.
 * [model_ts_metadata.csv](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/model/model_ts_metadata.csv) : store model configuration metadata on google cloud storage but it allow you to query against external table on BigQuery.
 * [train_data](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/train_data) : store train/test csv file loaded from Bigquery.
