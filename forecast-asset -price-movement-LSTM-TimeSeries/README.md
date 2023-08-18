@@ -3,6 +3,8 @@
 - We provide you with the End to End Solution from ingesting data into BigQuery to visualizing prediction result on Dashboard tool.
 
 ## Steps performed include the following task and process flow figure shown in below.
+![process](https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/93310eae-1eff-4a19-9fd1-55e66b3e3c13)
+
 1. Load stock price data from Finance.yahoo.com to Bigquery.
 2. Create technical analysis indicator such as EMA,MACD,SINGLA using [TA library](https://technical-analysis-library-in-python.readthedocs.io/en/latest/) as features and import data into the price data table.
 3. Build Time Series LSTM Model.
@@ -11,8 +13,6 @@
 4. Load tuned model to  make prediction and store prediction result into the prediciton result table on BigQuery.
 5. Visualize prediction result using line chart compared to the actual result through Jupyter Lab and PowerBI.
 
-
-![process](https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/93310eae-1eff-4a19-9fd1-55e66b3e3c13)
 
 <img width="697" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/9694e19a-9e98-4d3a-a6fb-26e773cb8f5b">
 
