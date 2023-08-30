@@ -1,6 +1,7 @@
 fin_forecast_performance
+
 collection_timestamp as MONTH partition
-collection_date,model_id
+collection_date,model_id,metric_name
 
 [
   {
@@ -14,6 +15,28 @@ collection_date,model_id
     "name": "model_id",
     "mode": "NULLABLE",
     "type": "STRING",
+    "description": null,
+    "fields": []
+  },
+ {
+    "name": "metric_name",
+    "mode": "NULLABLE",
+    "type": "STRING",
+    "description": null,
+    "fields": []
+  },
+ {
+    "name": "metric_value",
+    "mode": "NULLABLE",
+    "type": "FLOAT",
+    "description": null,
+    "fields": []
+  },
+
+  {
+    "name": "collection_timestamp",
+    "mode": "NULLABLE",
+    "type": "DATETIME",
     "description": null,
     "fields": []
   },
@@ -52,12 +75,5 @@ collection_date,model_id
         "fields": []
       }
     ]
-  },
-  {
-    "name": "collection_timestamp",
-    "mode": "NULLABLE",
-    "type": "DATETIME",
-    "description": null,
-    "fields": []
   }
 ]
