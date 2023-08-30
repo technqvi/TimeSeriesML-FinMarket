@@ -1,0 +1,63 @@
+fin_forecast_performance
+collection_timestamp as MONTH partition
+collection_date,model_id
+
+[
+  {
+    "name": "collection_date",
+    "mode": "NULLABLE",
+    "type": "DATE",
+    "description": null,
+    "fields": []
+  },
+  {
+    "name": "model_id",
+    "mode": "NULLABLE",
+    "type": "STRING",
+    "description": null,
+    "fields": []
+  },
+  {
+    "name": "pred_actual_data",
+    "mode": "NULLABLE",
+    "type": "RECORD",
+    "description": null,
+    "fields": [
+      {
+        "name": "prediction_date",
+        "mode": "NULLABLE",
+        "type": "DATE",
+        "description": null,
+        "fields": []
+      },
+      {
+        "name": "date",
+        "mode": "NULLABLE",
+        "type": "DATE",
+        "description": null,
+        "fields": []
+      },
+      {
+        "name": "pred_value",
+        "mode": "NULLABLE",
+        "type": "FLOAT",
+        "description": null,
+        "fields": []
+      },
+      {
+        "name": "actual_value",
+        "mode": "NULLABLE",
+        "type": "FLOAT",
+        "description": null,
+        "fields": []
+      }
+    ]
+  },
+  {
+    "name": "collection_timestamp",
+    "mode": "NULLABLE",
+    "type": "DATETIME",
+    "description": null,
+    "fields": []
+  }
+]
