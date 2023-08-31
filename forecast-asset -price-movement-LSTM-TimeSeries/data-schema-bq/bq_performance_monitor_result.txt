@@ -1,7 +1,7 @@
 model_forecast_performance
 
-collection_timestamp as MONTH partition
-collection_date,model_id,metric_name
+partition : collection_timestamp as MONTH 
+cluster  :model_id,collection_date,metric_name
 
 [
   {
@@ -21,7 +21,7 @@ collection_date,model_id,metric_name
   {
     "name": "metric_value",
     "mode": "NULLABLE",
-    "type": "INTEGER",
+    "type": "FLOAT",
     "description": null,
     "fields": []
   },
