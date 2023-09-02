@@ -54,7 +54,7 @@
 
 ### [collect_performance_forecast_result.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result.ipynb)
 #### Youtub :[]()
-* -
+* - List on  Ppt to prepare content to record video
 * -
 * -
 * -
