@@ -52,6 +52,14 @@
 * Ingest JSON file into FinAssetForecast.fin_movement_forecast table.
 * This script has been deployed as clound function on google cloud as this link [forecast-asset-movement](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/forecast-asset-movement) and create job on cloud scheduler to trig clound function on daily basis.
 
+### [collect_performance_forecast_result.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result.ipynb)
+#### Youtub :[]()
+* -
+* -
+* -
+* -
+* Clound function on google cloud as this link [collect_performance_forecast_result](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result) 
+
 ### [invoke_forecast_gcf](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/invoke_forecast_gcf.ipynb)
 #### Youtube : [3 Make Stock Multi Step Prediction Using LSTM Model#2](https://youtu.be/8DlACgKslSE?t=4265)
 * To make prediction multiple items , run this script to call cloud function api by specifying desired period.
@@ -72,6 +80,8 @@
 * Retrive prediction result from view table in Bigquery.
 * Transform  data in order to filter only EMA1 Feature.
 * Create Visualization prection result(feature+prediction) compare to actual price with line chart on PowerBI.
+
+
 
 ### Folder to store Artifact and other files
 * [model](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/model) :  Each sub folder stores model file and scaler object file, each is located on both local path and google cloud  storage.
