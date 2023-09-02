@@ -54,10 +54,9 @@ def collect_prediction_result(request):   # run on clound function
 
     if  week_day==5:
         last_trading_day_of_week=1
-    elif week_day==6:
-        last_trading_day_of_week=2
+
     else:
-        raise Exception("Saturday OR Sunday,Both are allowed  as Collection Date for forcasting result.")   
+        raise Exception("Saturday  is allowed  as Collection Date for forcasting result.")   
 
     print(f"week_day={week_day} and last_trading_day_of_week={last_trading_day_of_week}")
 
