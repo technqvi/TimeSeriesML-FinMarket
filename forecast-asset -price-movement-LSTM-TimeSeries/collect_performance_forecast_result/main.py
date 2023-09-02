@@ -24,20 +24,23 @@ from google.api_core.exceptions import BadRequest
 
 # collectionDate='2023-08-26 00:00' # comment
 # uncomment and indent
+
 import functions_framework
 @functions_framework.http
 def collect_prediction_result(request):   # run on clound function
-# def collect_prediction_result(collectionDate): # migrate
 
+# def collect_prediction_result(collectionDate): # migrate
 
     # # Init parameter
 
-    # In[25]:
-
-
     # uncomment
     mode=2 # 2 for prodictoin 1 for test/migrate 
-    modelList=['spy-ema1-60t10-ds0115t0523','qqq-ema1-30t5-ds0115t0523']
+    modelList=['spy-ema1-60t10-ds0115t0523','qqq-ema1-30t5-ds0115t0523','spy-signal-60t10-ds0115t0523']
+ 
+    # comment
+    # model_id='spy-ema1-60t10-ds0115t0523'
+    #model_id='qqq-ema1-30t5-ds0115t0523'
+    #model_id="spy-signal-60t10-ds0115t0523"
 
     if mode==1: # Migrate to backfill data and Test 
         logDate=collectionDate
@@ -74,12 +77,6 @@ def collect_prediction_result(request):   # run on clound function
     genTableSchema=False
     metric_name='mae'
 
-    # comment
-    # model_id='spy-ema1-60t10-ds0115t0523'
-    #model_id='qqq-ema1-30t5-ds0115t0523'
-
-    #model_id="spy-signal-60t10-ds0115t0523"
-
 
     # # BigQuery Setting & Configuration Variable
 
@@ -114,18 +111,18 @@ def collect_prediction_result(request):   # run on clound function
     # In[41]:
 
 
-    sqlCheck=f"""
-    select collection_timestamp from `{table_perf_id}`
-    where date(collection_timestamp)='{log_date.strftime('%Y-%m-%d')}'
-    """
-    print(sqlCheck)
-    dfCheckDate=load_data_bq(sqlCheck)
-    if  dfCheckDate.empty==False:
-        print(f"Collection data on {log_date} found, no any action")
-        # uncomment
-        return f"Collection data on {log_date} found, no any action"
-    else:
-        print(f"We are ready to Collect data on {log_date}")
+    # sqlCheck=f"""
+    # select collection_timestamp from `{table_perf_id}`
+    # where date(collection_timestamp)='{log_date.strftime('%Y-%m-%d')}'
+    # """
+    # print(sqlCheck)
+    # dfCheckDate=load_data_bq(sqlCheck)
+    # if  dfCheckDate.empty==False:
+    #     print(f"Collection data on {log_date} found, no any action")
+    #     # uncomment
+    #     return f"Collection data on {log_date} found, no any action"
+    # else:
+    #     print(f"We are ready to Collect data on {log_date}")
 
 
     # # Create Start to End Date By Getting Last Date of Week
@@ -476,7 +473,11 @@ def collect_prediction_result(request):   # run on clound function
 # uncomment
 # Main 
 # print("Collect prediction result to monitor performance model")
-# listLogDate=['2023-06-03 00:00','2023-06-10 00:00'] 
+# listLogDate=[
+#     '2023-06-03 00:00','2023-06-10 00:00','2023-06-17 00:00','2023-06-24 00:00',
+#     '2023-07-01 00:00','2023-07-08 00:00','2023-07-15 00:00','2023-07-22 00:00','2023-07-29 00:00',
+#     '2023-08-05 00:00','2023-08-12 00:00','2023-08-19 00:00','2023-08-26 00:00','2023-09-02 00:00',
+#     ] 
 # for  d in listLogDate:
 #   print(collect_prediction_result(d))
 #   print("************************************************************************************************")
