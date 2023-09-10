@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[191]:
+# In[130]:
 
 
 import pandas as pd
@@ -19,34 +19,38 @@ from google.api_core.exceptions import BadRequest
 
 
 
-# In[192]:
+# In[131]:
 
 
-# collectionDate='2023-09-02 00:00' # comment
+
 # uncomment and indent
 import functions_framework
 @functions_framework.http
 def collect_prediction_result(request):   # run on clound function
 
-# def collect_prediction_result(collectionDate): # migrate
+# def collect_prediction_result(collectionDate): # backfill
 
 
-    # # Dict To store all collective data
+# # Dict To store all collective data Mode To run Job
 
-    # In[193]:
+# In[132]:
 
 
     dictCollectPerf={}
 
+    # uncomment
+    mode=2 # 2 for prodictoin 1 for test/migrate 
+    modelList=['spy-ema1-60t10-ds0115t0523','qqq-ema1-30t5-ds0115t0523','spy-signal-60t10-ds0115t0523']
+
+    # comment
+    #model_id='spy-ema1-60t10-ds0115t0523'
+    # model_id='qqq-ema1-30t5-ds0115t0523'
+    #model_id="spy-signal-60t10-ds0115t0523"
+
 
     # # Init parameter
 
-    # In[221]:
-
-
-    # uncomment
-    mode=2 #  2 for prodictoin 1 for test/migrate 
-    modelList=['spy-ema1-60t10-ds0115t0523','qqq-ema1-30t5-ds0115t0523','spy-signal-60t10-ds0115t0523']
+    # In[133]:
 
 
     if mode==1: # Migrate to backfill data and Test 
@@ -61,10 +65,17 @@ def collect_prediction_result(request):   # run on clound function
     day_name=calendar.day_name[log_date.weekday()]
 
     print(f"Date to collect data on {log_date.strftime('%Y-%m-%d')} {day_name}(Idx:{week_day}) at {log_timestamp}")
+    #week_day=log_date.weekday() Sature=5  [0,1,2,3,4,5,6]
 
+    # Friday of last n week so we want to collect model perf  0=last week ,1=2 week  
+    # 2=3 is weeks it convert the Friday (last trading day) to have actual value at least  2 week(10day) ahead to compare  predicted value
+    no_week_lookback=2
     if  week_day==5:
-        last_trading_day_of_week=1
+        last_trading_day_of_week=1+(no_week_lookback*7) # 7 is 1 week
+        # last_trading_day_of_week=1
     else:
+        # comment
+        # raise Exception("Saturday is allowed  as Collection Date for forcasting result.")   
         # uncomment
         return "Saturday is allowed  as Collection Date for forcasting result."  
 
@@ -74,9 +85,25 @@ def collect_prediction_result(request):   # run on clound function
     metric_name='mae'
 
 
+    # # Create Start to End Date By Getting Last Date of Week
+
+    # In[134]:
+
+
+    # get  prev prediction  from  get end prediction to beginneg or predicton of week 
+    endX=log_date+timedelta(days=-last_trading_day_of_week)
+    startX=endX+timedelta(days=1)+timedelta(days=-5) #-5 is from Friday to Monday
+    print(f"Collection data from {startX.strftime('%A %d-%m-%Y')} to {endX.strftime('%A %d-%m-%Y')}")
+
+    endX=endX.strftime('%Y-%m-%d')
+    startX=startX.strftime('%Y-%m-%d')
+
+    print(f"Convert Start and End Date to gather data {startX} - {endX} to string")
+
+
     # # BigQuery Setting & Configuration Variable
 
-    # In[222]:
+    # In[108]:
 
 
     date_col='date'
@@ -86,8 +113,9 @@ def collect_prediction_result(request):   # run on clound function
     table_data_id=f"{projectId}.{dataset_id}.fin_data"
     table_id = f"{projectId}.{dataset_id}.fin_movement_forecast"
     table_model_id= f"{projectId}.{dataset_id}.model_ts_metadata"
-
+    
     table_perf_id= f"{projectId}.{dataset_id}.model_forecast_performance"
+    #table_perf_id= f"{projectId}.{dataset_id}.model2_demo_forecast_performance"
 
     print(table_id)
     print(table_data_id)
@@ -102,27 +130,15 @@ def collect_prediction_result(request):   # run on clound function
         return df
 
 
-    # 
-
-    # # Create Start to End Date By Getting Last Date of Week
-
-    # In[223]:
+    # In[ ]:
 
 
-    # get  prev prediction  from  get end prediction to beginneg or predicton of week 
-    endX=log_date+timedelta(days=-last_trading_day_of_week)
-    startX=endX+timedelta(days=1)+timedelta(days=-5)
-    print(f"Collection data from {startX.strftime('%A %d-%m-%Y')} to {endX.strftime('%A %d-%m-%Y')}")
 
-    endX=endX.strftime('%Y-%m-%d')
-    startX=startX.strftime('%Y-%m-%d')
-
-    print(f"Convert start and end data {startX} - {endX} to string")
 
 
     # # Start Loop
 
-    # In[224]:
+    # In[109]:
 
 
     # uncomment  and indent
@@ -132,16 +148,13 @@ def collect_prediction_result(request):   # run on clound function
 
         # # Check where the given date collected data or not?
 
-        # In[225]:
+        # In[110]:
 
 
-        # this verions , it will check once , it is assumes that  all models have been collected data at once.
-        # sqlCheck=f"""
-        # select collection_timestamp from `{table_perf_id}`
-        # where date(collection_timestamp)='{log_date.strftime('%Y-%m-%d')}'
-        # """
         # this version , it will check on each model invidually
         # you can move it inside def process
+
+        # script in the first run because we want to generate table with nested and repeated column
         sqlCheck=f"""
         select collection_timestamp from `{table_perf_id}`
         where date(collection_timestamp)='{log_date.strftime('%Y-%m-%d')}' and model_id='{model_id}'
@@ -150,7 +163,7 @@ def collect_prediction_result(request):   # run on clound function
         print(sqlCheck)
         dfCheckDate=load_data_bq(sqlCheck)
         if  dfCheckDate.empty==False:
-            # print(f"Collection data on {log_date} for {model_id} found, no any action")
+            print(f"Collection data on {log_date} for {model_id} found, no any action")
             # uncomment
             return f"Collection data on {log_date} for {model_id} found, no any action"
         else:
@@ -159,7 +172,7 @@ def collect_prediction_result(request):   # run on clound function
 
         # # Get Model Meta
 
-        # In[226]:
+        # In[111]:
 
 
         def get_model_metadata(model_id):
@@ -183,7 +196,7 @@ def collect_prediction_result(request):   # run on clound function
 
         # # Retrive forecasting result data to Dictionary
 
-        # In[227]:
+        # In[112]:
 
 
         def get_forecasting_result_data(request):
@@ -256,7 +269,7 @@ def collect_prediction_result(request):   # run on clound function
 
         # # Create Predictive and Actual Value dataframe
 
-        # In[228]:
+        # In[113]:
 
 
         print("List all trading day in the week")
@@ -264,22 +277,32 @@ def collect_prediction_result(request):   # run on clound function
         print(myTradingDataList)
 
 
-        # In[229]:
+        # In[114]:
 
 
         dfAllForecastResult=pd.DataFrame(columns=['date','pred_value','actual_value','prediction_date'])
+        dfAllForecastResult
+
+
+        # In[115]:
+
 
         print(f"========================dfX :Actual Price========================")
         dfX=data['actual_price'][[prediction]]
         dfX.columns=[f'actual_value']
         print(dfX.info())
+        dfX
+
+
+        # In[116]:
+
 
         # actually , we can jon without spilting data by prediction_dtate
         for date in  myTradingDataList: # trading day on giver week
             print(f"=========================dfPred:Predicted Price at {date}=========================")
             dfPred=data['output'].query("prediction_date==@date")[[prediction]]
             dfPred.columns=[f'pred_value']
-
+            print(dfPred)
             print(dfPred.info())
 
             print("=====================dfCompare:Join Actual price to Predicted Price=================")
@@ -290,21 +313,26 @@ def collect_prediction_result(request):   # run on clound function
             print(dfCompare.info())
 
             if len(dfCompare)>0 : # it will be join if there is at least one record to show actual vs pred
-             dfAllForecastResult= pd.concat([dfAllForecastResult,dfCompare],ignore_index=True)
-             print(f"=========================Appended Data Joined=========================")
+                dfAllForecastResult= pd.concat([dfAllForecastResult,dfCompare],ignore_index=True)
+                print(f"=========================Appended Data Joined=========================")
             else:
-             print("No Appendind Data due to no at least one record to show actual vs pred")  
+                print("No Appendind Data due to no at least one record to show actual vs pred")  
             
+
+
+        # In[117]:
+
+
         print("========================dfAllForecastResult: All Predicton Result========================")
         print(dfAllForecastResult.info())
         print(dfAllForecastResult)
 
 
-        # # Calculate Metric
+        # # Calculate MAE Metric
 
         # ## Get sum distance between pred and actul value from prev rows
 
-        # In[230]:
+        # In[118]:
 
 
         sqlMetric=f"""
@@ -337,15 +365,28 @@ def collect_prediction_result(request):   # run on clound function
 
         # ## Cal sum distance between pred and actul value from last rows
 
-        # In[231]:
+        # In[119]:
 
 
         dfAllForecastResult['pred_diff_actual']=dfAllForecastResult.apply(lambda x : abs(x['pred_value']-x['actual_value']),axis=1)
+        dfAllForecastResult
+
+
+        # In[120]:
+
+
         recentSum=dfAllForecastResult['pred_diff_actual'].sum()
         recentCount=len(dfAllForecastResult)
 
+
         dfAllForecastResult=dfAllForecastResult.drop(columns=['pred_diff_actual'])
         print(f"Recent Sum={recentSum} and Count={recentCount}")
+
+
+        # ## Calculate MEA as formula
+
+        # In[121]:
+
 
         #https://en.wikipedia.org/wiki/Mean_absolute_error
         metric_value= round((prevSum+recentSum)/(prevCount+recentCount),2)
@@ -355,7 +396,7 @@ def collect_prediction_result(request):   # run on clound function
         # # Create Collection Performance Info Dataframe and Store 
         # 
 
-        # In[232]:
+        # In[122]:
 
 
         df=pd.DataFrame(data=[ [log_date,model_id,metric_name,metric_value,log_timestamp] ],
@@ -364,13 +405,13 @@ def collect_prediction_result(request):   # run on clound function
         print(df)
 
 
-        # In[233]:
+        # In[123]:
 
 
         dictCollectPerf[model_id]=(df,dfAllForecastResult)
 
 
-        # In[237]:
+        # In[124]:
 
 
         # uncomment
@@ -379,7 +420,7 @@ def collect_prediction_result(request):   # run on clound function
 
     # # End Loop
 
-    # In[238]:
+    # In[125]:
 
 
     # Iterate over model list
@@ -390,15 +431,9 @@ def collect_prediction_result(request):   # run on clound function
       print("#########################################################")
 
 
-    # In[ ]:
-
-
-
-
-
     # # Create Json Data 
 
-    # In[239]:
+    # In[126]:
 
 
     jsonDataList=[]
@@ -435,16 +470,20 @@ def collect_prediction_result(request):   # run on clound function
 
     # ## Try to ingest data to get correct schema and copy the schema to create table including partion/cluster manually
 
-    # In[240]:
+    # In[127]:
 
 
     try:
         table=client.get_table(table_perf_id)
-        print("Table {} already exists.".format(table_id))
+        print("Table {} already exists.".format(table_perf_id))
         # print(table.schema)
     except Exception as ex :
         print(str(ex))
-        
+
+
+    # In[128]:
+
+
     job_config = bigquery.LoadJobConfig()
 
     job_config.source_format = bigquery.SourceFormat.NEWLINE_DELIMITED_JSON
@@ -458,7 +497,7 @@ def collect_prediction_result(request):   # run on clound function
         print(job.error_result)
         print(job.errors)
         # uncomment
-        return "Error to load data to BigQuery"
+        # return "Error to load data to BigQuery"
     else:
         print(f"Import to bigquery successfully  {len(jsonDataList)} records")
         
@@ -466,7 +505,7 @@ def collect_prediction_result(request):   # run on clound function
     # truncate table`pongthorn.FinAssetForecast.model_forecast_performance` 
 
 
-    # In[27]:
+    # In[129]:
 
 
     # uncomment
@@ -479,21 +518,22 @@ def collect_prediction_result(request):   # run on clound function
 
 
 
-# In[28]:
+# In[ ]:
 
 
 # uncomment
 # Main 
 # print("Collect prediction result to monitor performance model")
-
+# start_backfill='2023-06-03 10:00' # comment
+# end_backfill='2023-08-26 10:00'
+# period_index=pd.date_range(start=start_backfill,end=end_backfill, freq="W-SAT")
+# listLogDate=[ d.strftime('%Y-%m-%d %H:%M')   for  d in  period_index   ]
+# for d in listLogDate:
+#     print(d)
 # multiple items
+
 # listLogDate=[
-#     '2023-06-03 00:00','2023-06-10 00:00','2023-06-17 00:00','2023-06-24 00:00',
-#     '2023-07-01 00:00','2023-07-08 00:00','2023-07-15 00:00','2023-07-22 00:00','2023-07-29 00:00',
-#     '2023-08-05 00:00','2023-08-12 00:00','2023-08-19 00:00','2023-08-26 00:00','2023-09-02 00:00',
-#     ] 
-# listLogDate=[
-#      '2023-08-05 00:00','2023-08-12 00:00','2023-08-19 00:00','2023-08-26 00:00'
+#      '2023-08-05 00:00','2023-08-12 00:00','2023-08-19 00:00','2023-08-26 00:00','2023-09-02 00:00'
 # ]
 # for  d in listLogDate:
 #   print(f"*******************************Collect prediction result as of {d}*****************************************")
@@ -501,7 +541,7 @@ def collect_prediction_result(request):   # run on clound function
 #   print("************************************************************************************************")
 
 # sigle item
-# collectionDate='2023-08-26 00:00' # comment    
+# collectionDate='2023-09-09 10:00' # comment    
 # print(collect_prediction_result(collectionDate))
 
 
