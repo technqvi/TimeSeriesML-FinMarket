@@ -54,10 +54,12 @@
 
 ### [collect_performance_forecast_result.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result.ipynb)
 #### Youtub :[]()
-* - List on  Ppt to prepare content to record video
-* -
-* -
-* -
+* Create collection date on Saturday as well as start date and end date to gather model performance data every week
+* Get model configuration metadata ( This scrip is capable of collecting performance on multiple models)
+* Retrieve predited value  and actual values as seperate dataframe from tables in BigQuery and merge the both into one dataframe
+* Take both recently created dataframe and the whole  model performance data previousely collected from prior week  to calculate MAE togather and add the calculation result into dataframe.
+* Convert dataframe to json object along with adding predicted value and actual values into this json object as  nested and repeated data.
+* Load json object into BigQuery.
 * Clound function as this link [collect_performance_forecast_result](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result) 
 
 ### [invoke_forecast_gcf](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/invoke_forecast_gcf.ipynb)
