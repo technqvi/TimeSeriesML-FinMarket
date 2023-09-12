@@ -1,9 +1,10 @@
 # About
 This project is about how to build time-series model using Long short-term memory (LSTM) network to predict asset price(ETF-Fund,Stock, Crypto) and its technical indicators(Moving-Average,MACD,RSI). Mainly there are 3 parts such as Main Project  ,Main-Section and Additional-Section.
 
-## Main Project : [forecast-asset -price-movement-LSTM-TimeSeries](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries) .
+## Main Project : [forecast-asset -price-movement-LSTM-TimeSeries](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries) . Click to see more details.
 ### Main Tutorial : [Building LSTM Time-Series Models to Predict Future Stock Price Movement](https://www.youtube.com/playlist?list=PLIxgtZc_tZWPCX4dAFJFhDPPGxEungxc8)
-![process](https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/ff6cb6e1-ea11-4677-84e0-0949f1d33cf0)
+![process](https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/ff6cb6e1-ea11-4677-84e0-0949f1d33cf0)  
+
 
 
 <img width="839" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/8306119d-1399-4aa5-8d3d-0c968161f5a3">
