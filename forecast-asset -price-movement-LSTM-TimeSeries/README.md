@@ -2,8 +2,8 @@
 - This project involves in building time series model using Long short-term memory (LSTM) that is  kind of RNN(Recurrent Neural Network)  on Tensorflow Framework in order to make prediction of future stock price movement pattern . The model use EMA price data points as feature input over the past 30 days to forecast EMA price as prediction output over the next 5 days.
 - We provide you with the End to End Solution from ingesting data into BigQuery to visualizing prediction result on Dashboard tool.
 
-## Steps performed include the following task and process flow figure shown in below.
-![process](https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/93310eae-1eff-4a19-9fd1-55e66b3e3c13)
+## Steps performed include the following task and process flow figure shown  below.
+![process](https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/ff6cb6e1-ea11-4677-84e0-0949f1d33cf0)
 
 1. Load stock price data from Finance.yahoo.com to Bigquery.
 2. Create technical analysis indicator such as EMA,MACD,SINGLA using [TA library](https://technical-analysis-library-in-python.readthedocs.io/en/latest/) as features and import data into the price data table.
@@ -12,13 +12,15 @@
    - Save tuned model and scaler(1.feature scaler 2.prediction scaler) into google cloud storage.
 4. Load tuned model to  make prediction and store prediction result into the prediciton result table on BigQuery.
 5. Visualize prediction result using line chart compared to the actual result through Jupyter Lab and PowerBI.
+6. Collect model performance data such as Predicted Value and  Actual Value  and bring them  to calculate Mean Absolute Error(MAE) to monitor model performance over time.
+7. Visualize error between predicted Value and  actual Value and show MAE value  over time.
 
 
 <img width="697" alt="image" src="https://github.com/technqvi/TimeSeriesML-FinMarket/assets/38780060/9694e19a-9e98-4d3a-a6fb-26e773cb8f5b">
 
 ## [Youtube : Building LSTM Time-Series Models  to Predict Future Stock Price Movement](https://www.youtube.com/playlist?list=PLIxgtZc_tZWPCX4dAFJFhDPPGxEungxc8)
 
-## [Forecast Asset Future Price Movement By LSTM-TimeSeries](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries)
+## [Forecast Asset Future Price Movement By LSTM-TimeSeries Source Code](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries)
 ### [load_daily_price_from_yahoo.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/load_daily_price_from_yahoo.ipynb)
 ##### Youtube : [1 Load Stock Price From Yahoo To BigQuery For Building LSTM Model](https://www.youtube.com/watch?v=jaPpyopNFPA&feature=youtu.be)
 * There are 2 options to load price data to GoogleBiquery.
@@ -76,7 +78,7 @@
 ### [collect_performance_forecast_result.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result.ipynb)
 #### Youtub :[5 Collect&Monitor Time Series Model Performance Data](https://www.youtube.com/watch?v=Fd1GfmX_Z3k&list=PLIxgtZc_tZWPCX4dAFJFhDPPGxEungxc8&index=7)
 * Create collection date on Saturday as well as start date and end date to gather model performance data every week.
-* Get model configuration metadata ( This script is capable of collecting performance on multiple models only once).
+* Get model configuration metadata ( This script is capable of collecting performance for multiple models once).
 * Retrieve predicted value  and actual values  and return as dataframe from tables in BigQuery and merge both into one dataframe.
 * Bring the recently created dataframe as the first dataframe and the whole model performance data previously collected from the prior weeks  as the second dataframe to calculate MAE together and put the calculation result into the dataframe.
 * Convert dataframe to JSON object along with adding predicted value and actual values into this JSON object as  nested and repeated columns and end up  loading this JSON object into BigQuery.
