@@ -75,13 +75,12 @@
 
 ### [collect_performance_forecast_result.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result.ipynb)
 #### Youtub :[5 Collect&Monitor Time Series Model Performance Data](https://www.youtube.com/watch?v=Fd1GfmX_Z3k&list=PLIxgtZc_tZWPCX4dAFJFhDPPGxEungxc8&index=7)
-* Create collection date on Saturday as well as start date and end date to gather model performance data every week
-* Get model configuration metadata ( This scrip is capable of collecting performance on multiple models)
-* Retrieve predited value  and actual values as seperate dataframe from tables in BigQuery and merge the both into one dataframe
-* Take both recently created dataframe and the whole  model performance data previousely collected from prior week  to calculate MAE togather and add the calculation result into dataframe.
-* Convert dataframe to json object along with adding predicted value and actual values into this json object as  nested and repeated data.
-* Load json object into BigQuery.
-* Clound function as this link [collect_performance_forecast_result](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result) 
+* Create collection date on Saturday as well as start date and end date to gather model performance data every week.
+* Get model configuration metadata ( This script is capable of collecting performance on multiple models only once).
+* Retrieve predicted value  and actual values  and return as dataframe from tables in BigQuery and merge both into one dataframe.
+* Bring the recently created dataframe as the first dataframe and the whole model performance data previously collected from the prior weeks  as the second dataframe to calculate MAE together and put the calculation result into the dataframe.
+* Convert dataframe to JSON object along with adding predicted value and actual values into this JSON object as  nested and repeated columns and end up  loading this JSON object into BigQuery.
+* Cloud function as this link [collect_performance_forecast_result](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result) 
 
 
 ### Folder to store Artifact and other files
