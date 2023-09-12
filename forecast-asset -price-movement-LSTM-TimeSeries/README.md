@@ -52,16 +52,6 @@
 * Ingest JSON file into FinAssetForecast.fin_movement_forecast table.
 * This script has been deployed as clound function on google cloud as this link [forecast-asset-movement](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/forecast-asset-movement) and create job on cloud scheduler to trig clound function on daily basis.
 
-### [collect_performance_forecast_result.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result.ipynb)
-#### Youtub :[]()
-* Create collection date on Saturday as well as start date and end date to gather model performance data every week
-* Get model configuration metadata ( This scrip is capable of collecting performance on multiple models)
-* Retrieve predited value  and actual values as seperate dataframe from tables in BigQuery and merge the both into one dataframe
-* Take both recently created dataframe and the whole  model performance data previousely collected from prior week  to calculate MAE togather and add the calculation result into dataframe.
-* Convert dataframe to json object along with adding predicted value and actual values into this json object as  nested and repeated data.
-* Load json object into BigQuery.
-* Clound function as this link [collect_performance_forecast_result](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result) 
-
 ### [invoke_forecast_gcf](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/invoke_forecast_gcf.ipynb)
 #### Youtube : [3 Make Stock Multi Step Prediction Using LSTM Model#2](https://youtu.be/8DlACgKslSE?t=4265)
 * To make prediction multiple items , run this script to call cloud function api by specifying desired period.
@@ -83,6 +73,15 @@
 * Transform  data in order to filter only EMA1 Feature.
 * Create Visualization prection result(feature+prediction) compare to actual price with line chart on PowerBI.
 
+### [collect_performance_forecast_result.ipynb](https://github.com/technqvi/TimeSeriesML-FinMarket/blob/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result.ipynb)
+#### Youtub :[5 Collect&Monitor Time Series Model Performance Data](https://www.youtube.com/watch?v=Fd1GfmX_Z3k&list=PLIxgtZc_tZWPCX4dAFJFhDPPGxEungxc8&index=7)
+* Create collection date on Saturday as well as start date and end date to gather model performance data every week
+* Get model configuration metadata ( This scrip is capable of collecting performance on multiple models)
+* Retrieve predited value  and actual values as seperate dataframe from tables in BigQuery and merge the both into one dataframe
+* Take both recently created dataframe and the whole  model performance data previousely collected from prior week  to calculate MAE togather and add the calculation result into dataframe.
+* Convert dataframe to json object along with adding predicted value and actual values into this json object as  nested and repeated data.
+* Load json object into BigQuery.
+* Clound function as this link [collect_performance_forecast_result](https://github.com/technqvi/TimeSeriesML-FinMarket/tree/main/forecast-asset%20-price-movement-LSTM-TimeSeries/collect_performance_forecast_result) 
 
 
 ### Folder to store Artifact and other files
